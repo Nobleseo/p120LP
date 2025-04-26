@@ -3,165 +3,306 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Project 120 Africa - Empowering youth through skill acquisition and digital innovation." />
-  <meta property="og:title" content="Project 120 Africa" />
-  <meta property="og:description" content="Empowering youth across Africa through training, mentorship, and access to opportunities." />
-  <meta property="og:image" content="cover.jpg" />
-  <meta name="twitter:card" content="summary_large_image" />
   <title>Project 120 Africa | Youth Empowerment</title>
   <style>
     :root {
-      --bg: #121212;
+      --bg-color: #121212;
+      --text-color: #ffffff;
       --card-bg: #252525;
-      --text: #ffffff;
-      --primary: #139717;
-      --accent: #d9d80f;
+      --title-color: #d9d80f; /* Yellow */
+      --accent-color: #139717; /* Green */
+      --button-bg: #d9d80f;
+      --button-text: #000000;
       --faint: rgba(255,255,255,0.8);
-      --light-bg: #f9f8f4;
-      --light-card: #ffffff;
-      --light-text: #333333;
-      --light-faint: rgba(0,0,0,0.6);
+    }
+    body.light-theme {
+      --bg-color: #f5f5f5;
+      --text-color: #333333;
+      --card-bg: #ffffff;
+      --title-color: #139717; /* Green */
+      --accent-color: #d9d80f; /* Yellow */
+      --button-bg: #139717;
+      --button-text: #ffffff;
+      --faint: rgba(0,0,0,0.6);
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      transition: background .3s, color .3s;
-    }
-    body.light {
-      background: var(--light-bg);
-      color: var(--light-text);
-    }
+    body { font-family: Arial, sans-serif; background: var(--bg-color); color: var(--text-color); }
     a { text-decoration: none; color: inherit; }
-    h1,h2,h3,h4 { animation: fadeInUp 1s ease-out; text-shadow: 1px 1px 2px rgba(0,0,0,0.3); }
+    h1,h2,h3,h4 { animation: fadeInUp 1s ease-out; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); color: var(--title-color); }
     p, li { line-height: 1.6; animation: fadeInUp 1s ease-out; }
     @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes slideLeft { from { opacity: 0; transform: translateX(-50px); } to { opacity: 1; transform: translateX(0); } }
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
 
-    header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1rem 2rem;
-      background: var(--card-bg);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      transition: background .3s;
-    }
-    body.light header { background: var(--light-card); }
-    .logo { display: flex; align-items: center; font-size: 1.2rem; font-weight: bold; color: var(--primary); }
-    .logo img { margin-right: 10px; }
-    .theme-switch { background: none; border: 2px solid var(--primary); padding: .3rem .6rem; border-radius: 4px; cursor: pointer; font-size: .9rem; color: var(--primary); }
-    .theme-switch:hover { background: var(--primary); color: var(--bg); }
+    /* Header */
+    header { display: flex; align-items: center; justify-content: space-between; padding: 1rem 2rem; background: var(--card-bg); position: sticky; top: 0; z-index: 100; }
+    .logo { display: flex; align-items: center; }
+    .logo img { height: 50px; margin-right: 0.5rem; }
     nav { display: flex; gap: 1rem; }
     nav a { font-weight: bold; transition: opacity .2s; }
     nav a:hover { opacity: .7; }
     .hamburger { display: none; flex-direction: column; gap: 4px; cursor: pointer; }
-    .hamburger div { width: 25px; height: 3px; background: var(--text); }
-    body.light .hamburger div { background: var(--light-text); }
+    .hamburger div { width: 25px; height: 3px; background: var(--text-color); }
+    #theme-switcher { background: none; border: none; color: var(--text-color); font-size: 1.5rem; cursor: pointer; }
     @media(max-width:768px) {
       nav { display: none; position: absolute; top: 70px; right: 20px; flex-direction: column; background: var(--card-bg); padding: 1rem; border-radius: 8px; }
-      body.light nav { background: var(--light-card); }
       nav.active { display: flex; }
       .hamburger { display: flex; }
     }
-    section { padding: 3rem 2rem; max-width: 1000px; margin: auto; }
-    section h2 { color: var(--primary); margin-bottom: 1rem; }
-    footer { background: var(--card-bg); color: var(--faint); text-align: center; padding: 1rem; }
+
+    /* Hero */
+    .hero { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 2rem; padding: 4rem 2rem; }
+    .hero-text { animation: slideLeft 1s ease-out; }
+    .hero-text h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+    .hero-text p { font-size: 1.1rem; margin-bottom: 2rem; }
+    .hero-images { position: relative; width: 100%; height: 350px; overflow: hidden; border-radius: 8px; }
+    .hero-images img { position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1s; }
+    .hero-images img.active { opacity: 1; }
+    .btn { background: var(--button-bg); color: var(--button-text); padding: .8rem 2rem; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; transition: background .3s; }
+    .btn:hover { background: #c9c60d; }
+
+    /* Sections */
+    .section { max-width: 900px; margin: 3rem auto; padding: 0 2rem; }
+    .section h2 { margin-bottom: 1rem; }
+
+    /* Overview */
+    #overview p { margin-bottom: 1rem; }
+
+    /* Benefits */
+    #benefits ul { list-style: none; padding-left: 0; }
+    #benefits li { position: relative; padding-left: 2rem; margin-bottom: 1rem; }
+    #benefits li::before { content: '✔'; position: absolute; left: 0; color: var(--accent-color); }
+
+    /* Structure */
+    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 1.5rem; }
+    .step { background: var(--card-bg); padding: 1.5rem; border-radius: 8px; }
+    .step h3 { margin-bottom: .5rem; color: var(--accent-color); }
+
+    /* Skills Offered */
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px,1fr)); gap: 1rem; }
+    .skill-card { background: var(--card-bg); padding: 1rem; border-radius: 8px; text-align: center; transition: transform .3s; }
+    .skill-card:hover { transform: translateY(-5px); }
+    .skill-card h4 { margin-bottom: .5rem; }
+
+    /* Team Slider */
+    #team { padding: 2rem 0; text-align: center; }
+    .team-slider { position: relative; overflow: hidden; max-width: 800px; margin: auto; }
+    .team-track { display: flex; transition: transform .8s ease; }
+    .member-card { flex: 0 0 220px; background: var(--card-bg); border-radius: 8px; overflow: hidden; text-align: center; padding: 1.5rem; margin: 0 0.5rem; }
+    .member-card img { width: 100px; height: 100px; border-radius: 50%; margin-bottom: 1rem; }
+    .member-card h4 { margin-bottom: .5rem; }
+    .member-card p { font-size: .9rem; color: var(--faint); }
+    .slider-controls { margin-top: 1rem; }
+    .slider-controls button { background: var(--button-bg); color: var(--button-text); border: none; padding: .5rem 1rem; margin: 0 .5rem; cursor: pointer; border-radius: 5px; }
+
+    /* Testimonials */
+    #testimonials { padding: 2rem 0; text-align: center; }
+    .testimonial { display: none; max-width: 700px; margin: auto; }
+    .testimonial.active { display: block; }
+    .testimonial p { font-style: italic; margin-bottom: 1rem; }
+    .testimonial h4 { }
+
+    /* FAQ */
+    #faq .faq-item { background: var(--card-bg); margin: 1rem 0; border-radius: 6px; overflow: hidden; }
+    .faq-question { padding: 1rem; cursor: pointer; position: relative; font-weight: bold; user-select: none; }
+    .faq-question::after { content: '+'; position: absolute; right: 1rem; transition: transform .3s; }
+    .faq-item.open .faq-question::after { content: '-'; transform: rotate(180deg); }
+    .faq-answer { max-height: 0; overflow: hidden; padding: 0 1rem; transition: max-height .5s ease, padding .3s ease; }
+    .faq-item.open .faq-answer { max-height: 200px; padding: 1rem; }
+
+    /* Register */
+    #register { background: var(--card-bg); padding: 2rem; border-radius: 8px; max-width: 500px; margin: 3rem auto; box-shadow: 0 0 10px rgba(255,255,255,0.1); }
+    #countdown { text-align: center; margin-bottom: 1rem; }
+    .guarantee { display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; }
+    .guarantee img { width: 30px; margin-right: .5rem; }
+    .pricing { text-align: center; font-size: 1.2rem; margin-bottom: 1rem; }
+    .original-price { text-decoration: line-through; color: var(--faint); margin-right: .5rem; }
+    .early-bird { font-weight: bold; animation: blink 2s infinite; }
+    .cta-btn { display: inline-block; background: var(--button-bg); color: var(--button-text); padding: 1rem 2rem; border-radius: 5px; font-weight: bold; text-transform: uppercase; animation: blink 1.5s infinite; text-align: center; margin-top: 1rem; }
+    .fomo { text-align: center; color: #961111; font-weight: bold; margin-top: 1rem; }
+
+    /* Modal */
+    .modal { position: fixed; inset: 0; background: rgba(0,0,0,0.8); display: none; align-items: center; justify-content: center; }
+    .modal-content { background: var(--card-bg); padding: 2rem; border-radius: 8px; text-align: center; max-width: 400px; }
+    .modal-content h1 { margin-bottom: 1rem; }
+    .modal-content a { margin-top: 1rem; display: inline-block; background: var(--button-bg); color: var(--button-text); padding: .7rem 1.5rem; border-radius: 5px; }
+
+    footer { text-align: center; padding: 1rem; background: var(--card-bg); margin-top: 3rem; font-size: .85rem; }
   </style>
 </head>
 <body>
   <header>
-    <div class="logo"><img src="logo.png" alt="Project 120 Africa" height="40" /> Project 120 Africa</div>
-    <div>
-      <button class="theme-switch" onclick="toggleTheme()">Toggle Theme</button>
-      <span class="hamburger" onclick="document.querySelector('nav').classList.toggle('active')">
-        <div></div><div></div><div></div>
-      </span>
-    </div>
-    <nav>
-      <a href="#overview">Overview</a>
-      <a href="#benefits">Benefits</a>
-      <a href="#structure">Structure</a>
-      <a href="#skills">Skills</a>
-      <a href="#team">Team</a>
-      <a href="#testimonials">Testimonials</a>
-      <a href="#faq">FAQ</a>
-      <a href="#register">Register</a>
-    </nav>
+    <div class="logo"><img src="logo120.png" alt="Project 120 Africa"/>Project 120 Africa</div>
+    <div class="hamburger" onclick="document.querySelector('nav').classList.toggle('active')"><div></div><div></div><div></div></div>
+    <nav><a href="#overview">Overview</a><a href="#benefits">Benefits</a><a href="#structure">Structure</a><a href="#skills">Skills</a><a href="#team">Team</a><a href="#testimonials">Testimonials</a><a href="#faq">FAQ</a><a href="#register">Register</a></nav>
+    <button id="theme-switcher">🌙</button>
   </header>
 
-  <section id="hero" style="text-align: center; background: linear-gradient(135deg, var(--primary), var(--accent)); color: #000;">
-    <h1 style="font-size: 2.5rem; margin-bottom: 1rem;">Empowering the Next Generation of African Innovators</h1>
-    <p style="font-size: 1.2rem; max-width: 700px; margin: auto;">Project 120 Africa is a youth empowerment initiative designed to unlock potential through digital skills, mentorship, and opportunity creation. Be part of the transformation.</p>
-    <a href="#register" style="display: inline-block; margin-top: 1.5rem; background: #000; color: #fff; padding: .75rem 1.5rem; border-radius: 6px; font-weight: bold;">Join the Movement</a>
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Empowering Africa’s Youth Through Digital Skills</h1>
+      <p>Join Project 120 Africa to gain tech skills, mentorship, and real career opportunities.</p>
+      <button class="btn" onclick="scrollToSection('register')">Register Now</button>
+    </div>
+    <div class="hero-images">
+      <img src="https://via.placeholder.com/1470x350?text=Slide+1" class="active" />
+      <img src="https://via.placeholder.com/1470x350?text=Slide+2" />
+      <img src="https://via.placeholder.com/1470x350?text=Slide+3" />
+      <img src="https://via.placeholder.com/1470x350?text=Slide+4" />
+      <img src="https://via.placeholder.com/1470x350?text=Slide+5" />
+    </div>
   </section>
 
-  <section id="overview">
-    <h2>Program Overview</h2>
-    <p>Project 120 Africa is a grassroots movement targeting 120 youth in each African country to receive digital skills training, mentorship, and entrepreneurial support. Our mission is to reduce unemployment and bridge the digital divide.</p>
+  <section id="overview" class="section">
+    <h2>Project 120 Overview</h2>
+    <p>Project 120 Africa is a high-impact youth empowerment initiative focused on equipping the next generation with essential tech, media, and business skills.</p>
   </section>
 
-  <section id="benefits">
+  <section id="benefits" class="section">
     <h2>Benefits</h2>
     <ul>
-      <li>Access to world-class digital skills training</li>
-      <li>1-on-1 mentorship with industry experts</li>
-      <li>Opportunities for internships, jobs, and funding</li>
-      <li>Join a continent-wide alumni network</li>
+      <li>Hands-on training with industry experts</li>
+      <li>Certification and digital credentials</li>
+      <li>Networking and mentorship opportunities</li>
+      <li>Portfolio-ready projects and internships</li>
+      <li>Access to an exclusive alumni community</li>
     </ul>
   </section>
 
-  <section id="structure">
-    <h2>Program Structure</h2>
-    <p>The program runs in 3 phases over 12 weeks: training (4 weeks), mentoring (4 weeks), and project incubation (4 weeks).</p>
+  <section id="structure" class="section">
+    <h2>Project Structure</h2>
+    <div class="steps">
+      <div class="step"><h3>Registration</h3>4-week sign-up per state with early bird pricing.</div>
+      <div class="step"><h3>Conference</h3>2-day intensive sessions with panels & workshops.</div>
+      <div class="step"><h3>Internship</h3>1-month hands-on experience in chosen skillsets.</div>
+      <div class="step"><h3>Certification</h3>Award ceremony recognizing top performers.</div>
+    </div>
   </section>
 
-  <section id="skills">
-    <h2>Skills You Will Learn</h2>
-    <ul>
-      <li>Web Development & Design</li>
-      <li>Graphics & Multimedia</li>
-      <li>Digital Marketing</li>
-      <li>Entrepreneurship & Leadership</li>
-    </ul>
+  <section id="skills" class="section">
+    <h2>Skills Offered</h2>
+    <div class="skills-grid">
+      <div class="skill-card"><h4>Data Analysis</h4><p>Master Excel & Power BI</p></div>
+      <div class="skill-card"><h4>Email Marketing</h4><p>Craft high-converting campaigns</p></div>
+      <div class="skill-card"><h4>Digital Creatives</h4><p>Branding & user-generated content</p></div>
+      <div class="skill-card"><h4>Video Editing</h4><p>Adobe Premiere & storytelling</p></div>
+      <div class="skill-card"><h4>Content Writing</h4><p>Copywriting & sales funnels</p></div>
+      <div class="skill-card"><h4>Social Media Mgmt</h4><p>Engagement & growth strategies</p></div>
+      <div class="skill-card"><h4>Digital & Funnel Mktg</h4><p>Ad funnels & automation</p></div>
+      <div class="skill-card"><h4>Google Ads & YouTube</h4><p>Advertising & monetization</p></div>
+      <div class="skill-card"><h4>Virtual Assistance</h4><p>Admin support & tools mastery</p></div>
+    </div>
   </section>
 
-  <section id="team">
+  <section id="team" class="section">
     <h2>Meet the Team</h2>
-    <p>Our team is made up of professionals and volunteers passionate about youth development across the African continent.</p>
+    <div class="team-slider">
+      <div class="team-track">
+        <div class="member-card"><img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=400&q=80" alt="Jane Doe"><h4>Jane Doe</h4><p>Lead Tech Instructor, 5 yrs dev</p></div>
+        <div class="member-card"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80" alt="John Smith"><h4>John Smith</h4><p>Digital Marketer & Growth Strategist</p></div>
+        <div class="member-card"><img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=400&q=80" alt="Amina Ali"><h4>Amina Ali</h4><p>Media Strategist & Content Lead</p></div>
+        <div class="member-card"><img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=400&q=80" alt="David Lee"><h4>David Lee</h4><p>Startup Coach & Business Mentor</p></div>
+        <div class="member-card"><img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?auto=format&fit=crop&w=400&q=80" alt="Fatima Ade"><h4>Fatima Ade</h4><p>SEO & Analytics Specialist</p></div>
+        <div class="member-card"><img src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?auto=format&fit=crop&w=400&q=80" alt="Samuel Okoro"><h4>Samuel Okoro</h4><p>UX/UI Designer & Educator</p></div>
+      </div>
+    </div>
+    <div class="slider-controls"><button onclick="slideTeam(-1)">←</button><button onclick="slideTeam(1)">→</button></div>
   </section>
 
-  <section id="testimonials">
+  <section id="testimonials" class="section">
     <h2>Testimonials</h2>
-    <blockquote>“This program changed my life. I now work remotely and support my family.” — Amina, Nigeria</blockquote>
-    <blockquote>“I built my first startup after joining Project 120 Africa.” — Kwame, Ghana</blockquote>
+    <div id="testimonials">
+      <div class="testimonial active"><p>“This program transformed my career!”</p><h4>— Ruth M.</h4></div>
+      <div class="testimonial"><p>“I learned more in 3 months than 4 years in school.”</p><h4>— Emmanuel T.</h4></div>
+      <div class="testimonial"><p>“Mentorship and projects made all the difference.”</p><h4>— Chidera O.</h4></div>
+    </div>
   </section>
 
-  <section id="faq">
-    <h2>Frequently Asked Questions</h2>
-    <p><strong>Q: Is the program free?</strong><br />A: Yes, participation is 100% free for selected applicants.</p>
-    <p><strong>Q: Who can apply?</strong><br />A: Youth aged 18–30 residing in Africa.</p>
+  <section id="faq" class="section">
+    <h2>FAQ</h2>
+    <div class="faq-item"><div class="faq-question">What is the registration fee?</div><div class="faq-answer"><p>Early bird ₦25,000, standard ₦30,000.</p></div></div>
+    <div class="faq-item"><div class="faq-question">Who can apply?</div><div class="faq-answer"><p>African youths aged 18–35 passionate about digital skills.</p></div></div>
+    <div class="faq-item"><div class="faq-question">Is there a refund policy?</div><div class="faq-answer"><p>Full refund if canceled 7 days prior.</p></div></div>
+    <div class="faq-item"><div class="faq-question">How is training delivered?</div><div class="faq-answer"><p>Hybrid: in-person & online modules.</p></div></div>
   </section>
 
-  <section id="register">
+  <section id="register" class="section">
     <h2>Register Now</h2>
-    <p>Fill out the registration form on our official platform to begin your journey with Project 120 Africa.</p>
-    <a href="https://project120africa.org/register" target="_blank" style="background: var(--primary); color: #fff; padding: .75rem 1.5rem; border-radius: 6px; display: inline-block;">Apply Here</a>
+    <div id="countdown"></div>
+    <div class="guarantee"><img src="https://img.icons8.com/ios-filled/50/ffffff/guarantee.png" alt="Guarantee"/><span>100% Money-Back Guarantee</span></div>
+    <div class="pricing"><span class="original-price">₦30,000</span><span class="early-bird">₦25,000 Early Bird</span></div>
+    <a href="https://nestuge.com/reg-project-120-africa-btmc25" class="cta-btn" target="_blank">Register Now</a>
+    <div class="fomo">Hurry! Limited seats available.</div>
   </section>
 
-  <footer>
-    <p>&copy; 2025 Project 120 Africa. All rights reserved.</p>
-  </footer>
+  <div class="modal" id="thankYouModal"><div class="modal-content"><h1>Thank You!</h1><p>Payment successful.</p><a href="https://chat.whatsapp.com/KVnHToCiRPy9PP5ZRmQ7wj" target="_blank">Join WhatsApp Group</a></div></div>
+
+  <footer>© 2025 Project 120 Africa. All rights reserved.</footer>
 
   <script>
-    function toggleTheme() {
-      document.body.classList.toggle('light');
-    }
-    // Mobile nav toggle
-    document.querySelector('.hamburger').onclick = () => document.querySelector('nav').classList.toggle('active');
+    window.onload = () => {
+      const themeSwitcher = document.getElementById('theme-switcher');
+      if (localStorage.getItem('theme') === 'light') {
+        document.body.classList.add('light-theme');
+        themeSwitcher.textContent = '☀️';
+      } else {
+        themeSwitcher.textContent = '🌙';
+      }
+      themeSwitcher.addEventListener('click', () => {
+        document.body.classList.toggle('light-theme');
+        if (document.body.classList.contains('light-theme')) {
+          themeSwitcher.textContent = '☀️';
+          localStorage.setItem('theme', 'light');
+        } else {
+          themeSwitcher.textContent = '🌙';
+          localStorage.setItem('theme', 'dark');
+        }
+      });
+
+      document.querySelector('.hamburger').onclick = () => document.querySelector('nav').classList.toggle('active');
+
+      let hi = 0;
+      const heroImgs = document.querySelectorAll('.hero-images img');
+      setInterval(() => {
+        heroImgs[hi].classList.remove('active');
+        hi = (hi + 1) % heroImgs.length;
+        heroImgs[hi].classList.add('active');
+      }, 5000);
+
+      let pos = 0;
+      const track = document.querySelector('.team-track');
+      const cards = document.querySelectorAll('.member-card');
+      const total = cards.length;
+      window.slideTeam = dir => {
+        pos = (pos + dir + total) % total;
+        track.style.transform = `translateX(${-pos * 240}px)`;
+      };
+
+      const tests = document.querySelectorAll('.testimonial');
+      let ti = 0;
+      tests[0].classList.add('active');
+      setInterval(() => {
+        tests[ti].classList.remove('active');
+        ti = (ti + 1) % tests.length;
+        tests[ti].classList.add('active');
+      }, 5000);
+
+      document.querySelectorAll('.faq-question').forEach(q => q.onclick = () => q.parentElement.classList.toggle('open'));
+
+      const dl = new Date('May 15,2025 23:59:59').getTime();
+      setInterval(() => {
+        const t = dl - Date.now();
+        if (t > 0) {
+          const d = Math.floor(t / 86400000),
+            h = Math.floor((t % 86400000) / 3600000),
+            m = Math.floor((t % 3600000) / 60000),
+            s = Math.floor((t % 60000) / 1000);
+          document.getElementById('countdown').innerText = `Ends in ${d}d ${h}h ${m}m ${s}s`;
+        } else document.getElementById('countdown').innerText = 'Registration Closed';
+      }, 1000);
+
+      window.scrollToSection = id => document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    };
   </script>
 </body>
 </html>
-
