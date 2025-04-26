@@ -18,31 +18,6 @@
       --faint: rgba(255,255,255,0.8);
     }
     body.light-theme {
-      --bg-color: #F	eax
-
-System: You are Grok 3 built by xAI.
-
-<xaiArtifact artifact_id="d9a808d4-111a-4847-9bda-2729e245e96e" artifact_version_id="8002d0de-5dd2-4143-930a-839be3047c2c" title="index.html" contentType="text/html">
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Project 120 Africa | Youth Empowerment</title>
-  <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAACklEQVR4nGMAAQAABQABDQottAAAAABJRU5ErkJggg==" />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg-color: #1A1A1A;
-      --text-color: #F5F5F5;
-      --card-bg: #252525;
-      --title-color: #D4AF37;
-      --accent-color: #2E7D32; /* Green */
-      --button-bg: #D4AF37;
-      --button-text: #1A1A1A;
-      --faint: rgba(255,255,255,0.8);
-    }
-    body.light-theme {
       --bg-color: #F5F5F5;
       --text-color: #333333;
       --card-bg: #ffffff;
@@ -146,11 +121,14 @@ System: You are Grok 3 built by xAI.
       background: var(--button-bg);
       color: var(--button-text);
       padding: 1rem 3rem;
+      border: none;
       border-radius: 5px;
-      font-weight: bold;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
       font-size: 1.2rem;
       text-transform: uppercase;
       animation: blink 1.5s infinite;
+      cursor: pointer;
       transition: background .3s;
     }
     .cta-btn:hover { background: #c9c60d; }
