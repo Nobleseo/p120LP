@@ -5,48 +5,120 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Project 120 Africa | Youth Empowerment</title>
   <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAACklEQVR4nGMAAQAABQABDQottAAAAABJRU5ErkJggg==" />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Preload hero images for faster paint -->
+  <link rel="preload" as="image" href="images/photo1.png">
+  <link rel="preload" as="image" href="images/photo2.png">
+  <link rel="preload" as="image" href="images/photo3.png">
+  <link rel="preload" as="image" href="images/photo4.png">
+  <link rel="preload" as="image" href="images/photo5.webp">
+
+  <!-- Fonts: Montserrat for body, Lora for headings -->
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@600;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
   <style>
+    /* Typography variables */
     :root {
-      --bg-color: #1A1A1A;
-      --text-color: #F5F5F5;
-      --card-bg: #252525;
-      --title-color: #D4AF37;
-      --accent-color: #2E7D32; /* Green */
-      --button-bg: #D4AF37;
-      --button-text: #1A1A1A;
-      --faint: rgba(255,255,255,0.8);
+      --heading-font: 'Lora', serif;
+      --body-font:    'Montserrat', sans-serif;
+      --bg-color:     #1A1A1A;
+      --text-color:   #F5F5F5;
+      --card-bg:      #252525;
+      --title-color:  #D4AF37;
+      --accent-color: #2E7D32;
+      /* warm gold gradient */
+      --button-bg:    linear-gradient(135deg, #D4AF37 0%, #F0C75E 100%);
+      --button-text:  #1A1A1A;
+      --faint:        rgba(255,255,255,0.8);
     }
     body.light-theme {
-      --bg-color: #F5F5F5;
-      --text-color: #333333;
-      --card-bg: #ffffff;
-      --title-color: #2E7D32; /* Green */
+      --bg-color:     #F5F5F5;
+      --text-color:   #333333;
+      --card-bg:      #ffffff;
+      --title-color:  #2E7D32;
       --accent-color: #D4AF37;
-      --button-bg: #2E7D32; /* Green */
-      --button-text: #FFFFFF;
-      --faint: rgba(0,0,0,0.6);
+      --button-bg:    #2E7D32;
+      --button-text:  #FFFFFF;
+      --faint:        rgba(0,0,0,0.6);
     }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Montserrat', sans-serif; background: var(--bg-color); color: var(--text-color); }
+
+    /* Base typography scale */
+    html { font-size: 16px; }
+    body {
+      font-family: var(--body-font);
+      background: var(--bg-color);
+      color: var(--text-color);
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    h1, h2, h3, h4 {
+      font-family: var(--heading-font);
+      color: var(--title-color);
+      text-shadow: 1px 2px 4px rgba(0,0,0,0.6);
+      animation: fadeInUp 1s ease-out;
+      margin-bottom: 0.5em;
+    }
+    h1 { font-size: 2.5rem; line-height: 1.2; }
+    h2 { font-size: 2rem;   line-height: 1.3; }
+    h3 { font-size: 1.5rem; line-height: 1.4; }
+    h4 { font-size: 1.2rem; line-height: 1.5; }
+    p, li {
+      font-size: 1rem;
+      line-height: 1.7;
+      font-weight: 400;
+      animation: fadeInUp 1s ease-out;
+      margin-bottom: 1em;
+    }
+
+    /* Links, resets */
     a { text-decoration: none; color: inherit; }
-    h1,h2,h3,h4 { animation: fadeInUp 1s ease-out; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); color: var(--title-color); }
-    p, li { line-height: 1.6; animation: fadeInUp 1s ease-out; }
+    * { box-sizing: border-box; }
+
+    /* Button styles */
+    .btn, .cta-btn {
+      background: var(--button-bg);
+      color: var(--button-text);
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 700;
+      transition: transform .2s ease, box-shadow .2s ease;
+      display: inline-block;
+      text-transform: uppercase;
+    }
+    .btn, .cta-btn {
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    .btn:hover, .cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+    }
+
     @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     @keyframes slideLeft { from { opacity: 0; transform: translateX(-50px); } to { opacity: 1; transform: translateX(0); } }
-    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+    @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0.5; } }
 
     /* Header */
-    header { display: flex; align-items: center; justify-content: space-between; padding: 1rem 2rem; background: var(--card-bg); position: sticky; top: 0; z-index: 100; }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      background: var(--card-bg);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
     .logo { display: flex; align-items: center; }
     .logo img { height: 50px; margin-right: 0.5rem; }
     nav { display: flex; gap: 1rem; }
-    nav a { font-weight: bold; transition: opacity .2s; }
+    nav a { font-weight: 700; transition: opacity .2s; }
     nav a:hover { opacity: .7; }
     .hamburger { display: none; flex-direction: column; gap: 4px; cursor: pointer; }
     .hamburger div { width: 25px; height: 3px; background: var(--text-color); }
     #theme-switcher { background: none; border: none; color: var(--text-color); font-size: 1.5rem; cursor: pointer; }
-    @media(max-width:768px) {
+    @media (max-width: 768px) {
       nav { display: none; position: absolute; top: 70px; right: 20px; flex-direction: column; background: var(--card-bg); padding: 1rem; border-radius: 8px; }
       nav.active { display: flex; }
       .hamburger { display: flex; }
@@ -54,176 +126,176 @@
 
     /* Hero Slideshow */
     .hero { position: relative; height: 350px; overflow: hidden; }
-    .hero-slide { 
-      position: absolute; 
-      top: 0; 
-      left: 0; 
-      width: 100%; 
-      height: 100%; 
-      background-size: cover; 
-      background-position: center; 
-      background-repeat: no-repeat; 
-      background-color: #2E7D32; /* Fallback background color */
-      display: flex; 
-      align-items: center; 
-      justify-content: center; 
-      opacity: 0; 
-      transition: opacity 1s ease, transform 1s ease; 
-      image-rendering: auto;
+    .hero-slide {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      background-size: cover; background-position: center; background-repeat: no-repeat;
+      background-color: var(--accent-color);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; transition: opacity 1s ease, transform 1s ease;
     }
     .hero-slide::before {
       content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.3); /* Reduced opacity for clearer images */
-      z-index: 1;
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.3); z-index: 1;
     }
     .hero-slide.active { opacity: 1; transform: translateX(0); }
     .hero-slide:not(.active) { transform: translateX(100%); }
-    .hero-content { 
-      text-align: center; 
-      color: #fff; 
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.8); 
-      position: relative; 
-      z-index: 2;
+    .hero-content {
+      position: relative; z-index: 2; text-align: center; color: #fff; text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
     }
     .hero-content h1 { font-size: 3rem; margin-bottom: 1rem; }
-    .hero-content p { font-size: 1.2rem; margin-bottom: 2rem; }
-    .hero-content .btn { 
-      background: var(--button-bg); 
-      color: var(--button-text); 
-      padding: 1rem 3rem; 
-      border: none; 
-      border-radius: 5px; 
-      font-weight: bold; 
-      cursor: pointer; 
-      transition: background .3s; 
-      font-size: 1.2rem; 
-    }
-    .hero-content .btn:hover { background: #c9c60d; }
-    @media(max-width: 768px) {
+    .hero-content p  { font-size: 1.2rem; margin-bottom: 2rem; }
+    .hero-content .btn { padding: 1rem 3rem; font-size: 1.2rem; }
+    @media (max-width: 768px) {
       .hero { height: 250px; }
-      .hero-slide { 
-        background-size: cover; /* Maintain cover for mobile, adjust if needed */
-        background-position: center center;
-      }
       .hero-content h1 { font-size: 2rem; }
-      .hero-content p { font-size: 1rem; }
-      .hero-content .btn { padding: 0.8rem 2rem; font-size: 1rem; }
+      .hero-content p  { font-size: 1rem; }
+      .hero-content .btn { padding: .8rem 2rem; font-size: 1rem; }
     }
 
-    /* CTA Button Above Overview */
-    .cta-container {
-      text-align: center;
-      margin: 2rem auto;
-      max-width: 900px;
-      padding: 0 2rem;
-    }
-    .cta-btn {
-      display: inline-block;
-      background: var(--button-bg);
-      color: var(--button-text);
-      padding: 1rem 3rem;
-      border: none;
-      border-radius: 5px;
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 700;
-      font-size: 1.2rem;
-      text-transform: uppercase;
-      animation: blink 1.5s infinite;
-      cursor: pointer;
-      transition: background .3s;
-    }
-    .cta-btn:hover { background: #c9c60d; }
-    @media(max-width: 768px) {
-      .cta-btn { padding: 0.8rem 2rem; font-size: 1rem; }
+    /* CTA Above Overview */
+    .cta-container { text-align: center; margin: 2rem auto; max-width: 900px; padding: 0 2rem; }
+    .cta-btn { padding: 1rem 3rem; animation: blink 1.5s infinite; }
+    @media (max-width: 768px) {
+      .cta-btn { padding: .8rem 2rem; font-size: 1rem; }
     }
 
     /* Sections */
-    .section { max-width: 900px; margin: 3rem auto; padding: 0 2rem; opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .section { max-width: 900px; margin: 3rem auto; padding: 0 2rem; opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
     .section.visible { opacity: 1; transform: translateY(0); }
     .section h2 { margin-bottom: 1rem; }
 
-    /* Overview */
+    /* Overview & Benefits */
     #overview p { margin-bottom: 1rem; }
-
-    /* Benefits */
     #benefits ul { list-style: none; padding-left: 0; }
     #benefits li { position: relative; padding-left: 2rem; margin-bottom: 1rem; }
     #benefits li::before { content: '✔'; position: absolute; left: 0; color: var(--accent-color); }
 
-    /* Structure */
+    /* Steps */
     .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 1.5rem; }
-    .step { background: var(--card-bg); padding: 1.5rem; border-radius: 8px; }
+    .step { background: var(--card-bg); padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.15); }
     .step h3 { margin-bottom: .5rem; color: var(--accent-color); }
 
-    /* Skills Offered */
+    /* Skills */
     .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px,1fr)); gap: 1rem; }
-    .skill-card { background: var(--card-bg); padding: 1rem; border-radius: 8px; text-align: center; transition: transform .3s; }
+    .skill-card {
+      background: var(--card-bg); padding: 1rem; border-radius: 8px;
+      text-align: center; transition: transform .3s, box-shadow .3s;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
     .skill-card:hover { transform: translateY(-5px); }
-    .skill-card h4 { margin-bottom: .5rem; }
 
     /* Team Slider */
     #team { padding: 2rem 0; text-align: center; }
-    .team-slider { position: relative; overflow: hidden; max-width: 800px; margin: auto; }
+    .team-slider { overflow: hidden; max-width: 800px; margin: auto; }
     .team-track { display: flex; transition: transform .8s ease; }
-    .member-card { flex: 0 0 220px; background: var(--card-bg); border-radius: 8px; overflow: hidden; text-align: center; padding: 1.5rem; margin: 0 0.5rem; }
+    .member-card {
+      flex: 0 0 220px; background: var(--card-bg); border-radius: 8px;
+      text-align: center; padding: 1.5rem; margin: 0 .5rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
     .member-card img { width: 100px; height: 100px; border-radius: 50%; margin-bottom: 1rem; }
-    .member-card h4 { margin-bottom: .5rem; }
-    .member-card p { font-size: .9rem; color: var(--faint); }
     .slider-controls { margin-top: 1rem; }
-    .slider-controls button { background: var(--button-bg); color: var(--button-text); border: none; padding: .5rem 1rem; margin: 0 .5rem; cursor: pointer; border-radius: 5px; }
+    .slider-controls button {
+      background: var(--button-bg); color: var(--button-text);
+      border: none; padding: .5rem 1rem; margin: 0 .5rem; border-radius: 5px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .slider-controls button:hover { transform: translateY(-2px); box-shadow: 0 6px 10px rgba(0,0,0,0.25); }
 
-    /* Success Statistics */
+    /* Stats */
     #success-stats { text-align: center; padding: 2rem 0; }
-    .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 2rem; }
-    .stat-item { background: var(--card-bg); padding: 1.5rem; border-radius: 8px; }
+    .stats-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap: 2rem; }
+    .stat-item {
+      background: var(--card-bg); padding: 1.5rem; border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
     .stat-item h3 { font-size: 2rem; color: var(--title-color); }
-    .stat-item p { margin-top: 0.5rem; }
+    .stat-item p  { margin-top: .5rem; }
 
     /* Testimonials */
     #testimonials { padding: 2rem 0; text-align: center; }
     .testimonial { display: none; max-width: 700px; margin: auto; }
     .testimonial.active { display: block; }
     .testimonial p { font-style: italic; margin-bottom: 1rem; }
-    .testimonial h4 { }
 
     /* FAQ */
     #faq .faq-item { background: var(--card-bg); margin: 1rem 0; border-radius: 6px; overflow: hidden; }
-    .faq-question { padding: 1rem; cursor: pointer; position: relative; font-weight: bold; user-select: none; }
+    .faq-question {
+      padding: 1rem; cursor: pointer; position: relative; font-weight: 700; user-select: none;
+    }
     .faq-question::after { content: '+'; position: absolute; right: 1rem; transition: transform .3s; }
     .faq-item.open .faq-question::after { content: '-'; transform: rotate(180deg); }
-    .faq-answer { max-height: 0; overflow: hidden; padding: 0 1rem; transition: max-height .5s ease, padding .3s ease; }
+    .faq-answer {
+      max-height: 0; overflow: hidden; padding: 0 1rem;
+      transition: max-height .5s ease, padding .3s ease;
+    }
     .faq-item.open .faq-answer { max-height: 200px; padding: 1rem; }
 
     /* Register */
-    #register { background: var(--card-bg); padding: 2rem; border-radius: 8px; max-width: 500px; margin: 3rem auto; box-shadow: 0 0 10px rgba(255,255,255,0.1); }
+    #register {
+      background: var(--card-bg); padding: 2rem; border-radius: 8px;
+      max-width: 500px; margin: 3rem auto;
+      box-shadow: 0 0 10px rgba(255,255,255,0.1);
+    }
     #countdown { text-align: center; margin-bottom: 1rem; }
-    .guarantee { display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; }
+    .guarantee {
+      display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;
+    }
     .guarantee img { width: 30px; margin-right: .5rem; }
     .pricing { text-align: center; font-size: 1.2rem; margin-bottom: 1rem; }
     .original-price { text-decoration: line-through; color: var(--faint); margin-right: .5rem; }
-    .early-bird { font-weight: bold; animation: blink 2s infinite; }
-    .cta-btn { display: block; background: var(--button-bg); color: var(--button-text); padding: 1rem 2rem; border-radius: 5px; font-weight: bold; text-transform: uppercase; animation: blink 1.5s infinite; text-align: center; margin: 0 auto; width: fit-content; }
-    .fomo { text-align: center; color: #961111; font-weight: bold; margin-top: 1rem; }
+    .early-bird { font-weight: 700; animation: blink 2s infinite; }
+    .fomo { text-align: center; color: #961111; font-weight: 700; margin-top: 1rem; }
 
     /* Modal */
-    .modal { position: fixed; inset: 0; background: rgba(0,0,0,0.8); display: none; align-items: center; justify-content: center; }
-    .modal-content { background: var(--card-bg); padding: 2rem; border-radius: 8px; text-align: center; max-width: 400px; }
+    .modal {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.8);
+      display: none; align-items: center; justify-content: center;
+    }
+    .modal-content {
+      background: var(--card-bg); padding: 2rem; border-radius: 8px;
+      text-align: center; max-width: 400px;
+    }
     .modal-content h1 { margin-bottom: 1rem; }
-    .modal-content a { margin-top: 1rem; display: inline-block; background: var(--button-bg); color: var(--button-text); padding: .7rem 1.5rem; border-radius: 5px; }
+    .modal-content a {
+      display: inline-block; margin-top: 1rem;
+      background: var(--button-bg); color: var(--button-text);
+      padding: .7rem 1.5rem; border-radius: 5px;
+      transition: transform .2s, box-shadow .2s;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    .modal-content a:hover {
+      transform: translateY(-2px); box-shadow: 0 6px 10px rgba(0,0,0,0.25);
+    }
 
-    footer { text-align: center; padding: 1rem; background: var(--card-bg); margin-top: 3rem; font-size: .85rem; }
+    footer {
+      text-align: center; padding: 1rem;
+      background: var(--card-bg); margin-top: 3rem; font-size: .85rem;
+    }
   </style>
 </head>
+
 <body>
   <header>
-    <div class="logo"><img src="logo120.png" alt="Project 120 Africa"/>Project 120 Africa</div>
-    <div class="hamburger" onclick="document.querySelector('nav').classList.toggle('active')"><div></div><div></div><div></div></div>
-    <nav><a href="#overview">Overview</a><a href="#benefits">Benefits</a><a href="#structure">Structure</a><a href="#skills">Skills</a><a href="#team">Team</a><a href="#testimonials">Testimonials</a><a href="#faq">FAQ</a><a href="#register">Register</a></nav>
+    <div class="logo">
+      <img src="logo120.png" alt="Project 120 Africa" />
+      
+    </div>
+    <div class="hamburger" onclick="document.querySelector('nav').classList.toggle('active')">
+      <div></div><div></div><div></div>
+    </div>
+    <nav>
+      <a href="#overview">Overview</a>
+      <a href="#benefits">Benefits</a>
+      <a href="#structure">Structure</a>
+      <a href="#skills">Skills</a>
+      <a href="#team">Team</a>
+      <a href="#testimonials">Testimonials</a>
+      <a href="#faq">FAQ</a>
+      <a href="#register">Register</a>
+    </nav>
     <button id="theme-switcher">🌙</button>
   </header>
 
@@ -231,7 +303,7 @@
     <div class="hero-slide active" style="background-image: url('images/photo1.png');">
       <div class="hero-content">
         <h1>Digital Optimization for Africa</h1>
-        <p>Join Project 120 Africa to gain tech skills, mentorship, and real career opportunities,access to seed grant.</p>
+        <p>Join Project 120 Africa to gain tech skills, mentorship, and real career opportunities, access to seed grant.</p>
       </div>
     </div>
     <div class="hero-slide" style="background-image: url('images/photo2.png');">
@@ -254,14 +326,16 @@
     </div>
     <div class="hero-slide" style="background-image: url('images/photo5.webp');">
       <div class="hero-content">
-        <h1>Shaping Africa’s Digital Economyt</h1>
+        <h1>Shaping Africa’s Digital Economy</h1>
         <p>Be part of a community driving digital transformation in Africa.</p>
       </div>
     </div>
   </section>
 
   <div class="cta-container">
-    <a href="https://nestuge.com/reg-project-120-africa-btmc25" class="cta-btn" target="_blank">Register Now</a>
+    <a href="https://nestuge.com/reg-project-120-africa-btmc25" class="cta-btn" target="_blank">
+      Register Now
+    </a>
   </div>
 
   <section id="overview" class="section">
@@ -288,10 +362,22 @@
   <section id="structure" class="section">
     <h2>Project Structure</h2>
     <div class="steps">
-      <div class="step"><h3>Registration</h3>4-week sign-up per cohort with early bird pricing.</div>
-      <div class="step"><h3>Conference</h3>8-weeks intensive sessions with panels & workshops.</div>
-      <div class="step"><h3>Internship</h3>1-month hands-on experience in chosen skillsets.</div>
-      <div class="step"><h3>Certification</h3>Award ceremony recognizing top performers and pitchdesks.</div>
+      <div class="step">
+        <h3>Registration</h3>
+        4-week sign-up per cohort with early bird pricing.
+      </div>
+      <div class="step">
+        <h3>Conference</h3>
+        8-weeks intensive sessions with panels & workshops.
+      </div>
+      <div class="step">
+        <h3>Internship</h3>
+        1-month hands-on experience in chosen skillsets.
+      </div>
+      <div class="step">
+        <h3>Certification</h3>
+        Award ceremony recognizing top performers and pitch decks.
+      </div>
     </div>
   </section>
 
@@ -325,32 +411,45 @@
     <h2>Meet the Team</h2>
     <div class="team-slider">
       <div class="team-track">
-        <div class="member-card"><img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=400&q=80" alt="Jane Doe"><h4>Jane Doe</h4><p>Lead Tech Instructor, 5 yrs dev</p></div>
-        <div class="member-card"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80" alt="John Smith"><h4>John Smith</h4><p>Digital Marketer & Growth Strategist</p></div>
-        <div class="member-card"><img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=400&q=80" alt="Amina Ali"><h4>Amina Ali</h4><p>Media Strategist & Content Lead</p></div>
-        <div class="member-card"><img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=400&q=80" alt="David Lee"><h4>David Lee</h4><p>Startup Coach & Business Mentor</p></div>
-        <div class="member-card"><img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?auto=format&fit=crop&w=400&q=80" alt="Fatima Ade"><h4>Fatima Ade</h4><p>SEO & Analytics Specialist</p></div>
-        <div class="member-card"><img src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?auto=format&fit=crop&w=400&q=80" alt="Samuel Okoro"><h4>Samuel Okoro</h4><p>UX/UI Designer & Educator</p></div>
+        <div class="member-card">
+          <img src="Convy.jfif" alt="Emmanuel J">
+          <h4>Emmanuel J</h4><p>The Convener- A seasoned video editor and creative genius, spearheading the development of the African digital transformation project.</p>
+        </div>
+        <div class="member-card">
+          <img src="itoro.png" alt="Itoro Okwong">
+          <h4>Itoro Okwong</h4><p>Project Manager-An entrepreneur per excellence, writer, and movie analyst with a keen eye for storytelling and cinematic critique. 
+</p>
+        </div>
+        <div class="member-card">
+          <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=400&q=80" alt="Amina Ali">
+          <h4>Amina Ali</h4><p>Media Strategist & Content Lead</p>
+        </div>
+        <div class="member-card">
+          <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=400&q=80" alt="David Lee">
+          <h4>David Lee</h4><p>Startup Coach & Business Mentor</p>
+        </div>
+        <div class="member-card">
+          <img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?auto=format&fit=crop&w=400&q=80" alt="Fatima Ade">
+          <h4>Fatima Ade</h4><p>SEO & Analytics Specialist</p>
+        </div>
+        <div class="member-card">
+          <img src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?auto=format&fit=crop&w=400&q=80" alt="Samuel Okoro">
+          <h4>Samuel Okoro</h4><p>UX/UI Designer & Educator</p>
+        </div>
       </div>
     </div>
-    <div class="slider-controls"><button onclick="slideTeam(-1)">←</button><button onclick="slideTeam(1)">→</button></div>
+    <div class="slider-controls">
+      <button onclick="slideTeam(-1)">←</button>
+      <button onclick="slideTeam(1)">→</button>
+    </div>
   </section>
 
   <section id="success-stats" class="section">
     <h2>Our Impact</h2>
     <div class="stats-grid">
-      <div class="stat-item">
-        <h3>80%</h3>
-        <p>Graduates employed within 6 months</p>
-      </div>
-      <div class="stat-item">
-        <h3>100+</h3>
-        <p>Youth empowered across Africa</p>
-      </div>
-      <div class="stat-item">
-        <h3>95%</h3>
-        <p>Satisfaction rate from participants</p>
-      </div>
+      <div class="stat-item"><h3>80%</h3><p>Graduates employed within 6 months</p></div>
+      <div class="stat-item"><h3>100+</h3><p>Youth empowered across Africa</p></div>
+      <div class="stat-item"><h3>95%</h3><p>Satisfaction rate from participants</p></div>
     </div>
   </section>
 
@@ -374,22 +473,47 @@
 
   <section id="faq" class="section">
     <h2>FAQ</h2>
-    <div class="faq-item"><div class="faq-question">What is the registration fee?</div><div class="faq-answer"><p>Early bird ₦25,600, standard ₦40,000.</p></div></div>
-    <div class="faq-item"><div class="faq-question">Who can apply?</div><div class="faq-answer"><p>African youths aged 18–35 passionate about digital skills.</p></div></div>
-    <div class="faq-item"><div class="faq-question">Is there a refund policy?</div><div class="faq-answer"><p>Full refund if canceled 7 days prior.</p></div></div>
-    <div class="faq-item"><div class="faq-question">How is training delivered?</div><div class="faq-answer"><p>Hybrid: in-person & online modules.</p></div></div>
+    <div class="faq-item">
+      <div class="faq-question">What is the registration fee?</div>
+      <div class="faq-answer"><p>Early bird ₦25,600, standard ₦40,000.</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">Who can apply?</div>
+      <div class="faq-answer"><p>Fresh graduates, sit at home mums, enthusiastic individuals 
+.</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">Is there a refund policy?</div>
+      <div class="faq-answer"><p>Full refund if canceled 7 days prior.</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">How is training delivered?</div>
+      <div class="faq-answer"><p>Virtually:2 hours daily, 8 weeks work practical modules.</p></div>
+    </div>
   </section>
 
   <section id="register" class="section">
     <h2>Register Now</h2>
     <div id="countdown"></div>
-    <div class="guarantee"><img src="https://img.icons8.com/ios-filled/50/ffffff/guarantee.png" alt="Guarantee"/><span>100% Money-Back Guarantee</span></div>
-    <div class="pricing"><span class="original-price">₦40,000</span><span class="early-bird">₦25,600 Early Bird</span></div>
+    <div class="guarantee">
+      <img src="https://img.icons8.com/ios-filled/50/ffffff/guarantee.png" alt="Guarantee"/>
+      <span>100% Money-Back Guarantee</span>
+    </div>
+    <div class="pricing">
+      <span class="original-price">₦40,000</span>
+      <span class="early-bird">₦25,600 Early Bird</span>
+    </div>
     <a href="https://nestuge.com/reg-project-120-africa-btmc25" class="cta-btn" target="_blank">Register Now</a>
     <div class="fomo">Hurry! Limited seats available.</div>
   </section>
 
-  <div class="modal" id="thankYouModal"><div class="modal-content"><h1>Thank You!</h1><p>Payment successful.</p><a href="https://chat.whatsapp.com/KVnHToCiRPy9PP5ZRmQ7wj" target="_blank">Join WhatsApp Group</a></div></div>
+  <div class="modal" id="thankYouModal">
+    <div class="modal-content">
+      <h1>Thank You!</h1>
+      <p>Payment successful.</p>
+      <a href="https://chat.whatsapp.com/KVnHToCiRPy9PP5ZRmQ7wj" target="_blank">Join WhatsApp Group</a>
+    </div>
+  </div>
 
   <footer>© 2025 Project 120 Africa. All rights reserved.</footer>
 
@@ -399,9 +523,8 @@
       if (localStorage.getItem('theme') === 'light') {
         document.body.classList.add('light-theme');
         themeSwitcher.textContent = '☀️';
-      } else {
-        themeSwitcher.textContent = '🌙';
-      }
+      } else themeSwitcher.textContent = '🌙';
+
       themeSwitcher.addEventListener('click', () => {
         document.body.classList.toggle('light-theme');
         if (document.body.classList.contains('light-theme')) {
@@ -413,72 +536,68 @@
         }
       });
 
-      document.querySelector('.hamburger').onclick = () => document.querySelector('nav').classList.toggle('active');
+      document.querySelector('.hamburger').onclick = () =>
+        document.querySelector('nav').classList.toggle('active');
 
+      /* Hero slider */
       let currentSlide = 0;
       const slides = document.querySelectorAll('.hero-slide');
       const totalSlides = slides.length;
-
-      function showSlide(index) {
-        slides.forEach((slide, i) => {
-          slide.classList.remove('active');
-          if (i === index) {
-            slide.classList.add('active');
-          }
-        });
+      function showSlide(i) {
+        slides.forEach((s, idx) => s.classList.toggle('active', idx === i));
       }
-
-      function nextSlide() {
+      setInterval(() => {
         currentSlide = (currentSlide + 1) % totalSlides;
         showSlide(currentSlide);
-      }
+      }, 5000);
 
-      setInterval(nextSlide, 5000);
-
+      /* Team slider */
       let pos = 0;
       const track = document.querySelector('.team-track');
-      const cards = document.querySelectorAll('.member-card');
-      const totalCards = cards.length;
+      const cards = document.querySelectorAll('.member-card').length;
       window.slideTeam = dir => {
-        pos = (pos + dir + totalCards) % totalCards;
+        pos = (pos + dir + cards) % cards;
         track.style.transform = `translateX(${-pos * 240}px)`;
       };
 
+      /* Testimonials */
       const tests = document.querySelectorAll('.testimonial');
       let ti = 0;
-      tests[0].classList.add('active');
       setInterval(() => {
         tests[ti].classList.remove('active');
         ti = (ti + 1) % tests.length;
         tests[ti].classList.add('active');
       }, 5000);
 
-      document.querySelectorAll('.faq-question').forEach(q => q.onclick = () => q.parentElement.classList.toggle('open'));
+      /* FAQ toggles */
+      document.querySelectorAll('.faq-question').forEach(q =>
+        q.addEventListener('click', () =>
+          q.parentElement.classList.toggle('open')
+        )
+      );
 
-      const dl = new Date('May 15,2025 23:59:59').getTime();
+      /* Countdown */
+      const deadline = new Date('May 15, 2025 23:59:59').getTime();
       setInterval(() => {
-        const t = dl - Date.now();
+        const now = Date.now();
+        const t = deadline - now;
+        const out = document.getElementById('countdown');
         if (t > 0) {
           const d = Math.floor(t / 86400000),
-            h = Math.floor((t % 86400000) / 3600000),
-            m = Math.floor((t % 3600000) / 60000),
-            s = Math.floor((t % 60000) / 1000);
-          document.getElementById('countdown').innerText = `Ends in ${d}d ${h}h ${m}m ${s}s`;
-        } else document.getElementById('countdown').innerText = 'Registration Closed';
+                h = Math.floor((t % 86400000) / 3600000),
+                m = Math.floor((t % 3600000) / 60000),
+                s = Math.floor((t % 60000) / 1000);
+          out.textContent = `Ends in ${d}d ${h}h ${m}m ${s}s`;
+        } else {
+          out.textContent = 'Registration Closed';
+        }
       }, 1000);
 
-      window.scrollToSection = id => document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-
-      const sections = document.querySelectorAll('.section');
+      /* Scroll animations */
       const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
-        });
+        entries.forEach(e => e.isIntersecting && e.target.classList.add('visible'));
       }, { threshold: 0.1 });
-
-      sections.forEach(section => observer.observe(section));
+      document.querySelectorAll('.section').forEach(sec => observer.observe(sec));
     };
   </script>
 </body>
