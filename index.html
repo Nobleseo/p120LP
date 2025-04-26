@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Project 120 Africa | Youth Empowerment</title>
+  <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAACklEQVR4nGMAAQAABQABDQottAAAAABJRU5ErkJggg==" />
   <style>
     :root {
       --bg-color: #121212;
@@ -50,16 +51,16 @@
       .hamburger { display: flex; }
     }
 
-    /* Hero */
-    .hero { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 2rem; padding: 4rem 2rem; }
-    .hero-text { animation: slideLeft 1s ease-out; }
-    .hero-text h1 { font-size: 2.5rem; margin-bottom: 1rem; }
-    .hero-text p { font-size: 1.1rem; margin-bottom: 2rem; }
-    .hero-images { position: relative; width: 100%; height: 350px; overflow: hidden; border-radius: 8px; }
-    .hero-images img { position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1s; }
-    .hero-images img.active { opacity: 1; }
-    .btn { background: var(--button-bg); color: var(--button-text); padding: .8rem 2rem; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; transition: background .3s; }
-    .btn:hover { background: #c9c60d; }
+    /* Hero Slideshow */
+    .hero { position: relative; height: 350px; overflow: hidden; }
+    .hero-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 1s ease, transform 1s ease; }
+    .hero-slide.active { opacity: 1; transform: translateX(0); }
+    .hero-slide:not(.active) { transform: translateX(100%); }
+    .hero-content { text-align: center; color: #fff; text-shadow: 1px 1px 2px rgba(0,0,0,0.8); }
+    .hero-content h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+    .hero-content p { font-size: 1.1rem; margin-bottom: 2rem; }
+    .hero-content .btn { background: var(--button-bg); color: var(--button-text); padding: .8rem 2rem; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; transition: background .3s; }
+    .hero-content .btn:hover { background: #c9c60d; }
 
     /* Sections */
     .section { max-width: 900px; margin: 3rem auto; padding: 0 2rem; }
@@ -118,7 +119,7 @@
     .pricing { text-align: center; font-size: 1.2rem; margin-bottom: 1rem; }
     .original-price { text-decoration: line-through; color: var(--faint); margin-right: .5rem; }
     .early-bird { font-weight: bold; animation: blink 2s infinite; }
-    .cta-btn { display: inline-block; background: var(--button-bg); color: var(--button-text); padding: 1rem 2rem; border-radius: 5px; font-weight: bold; text-transform: uppercase; animation: blink 1.5s infinite; text-align: center; margin-top: 1rem; }
+    .cta-btn { display: block; background: var(--button-bg); color: var(--button-text); padding: 1rem 2rem; border-radius: 5px; font-weight: bold; text-transform: uppercase; animation: blink 1.5s infinite; text-align: center; margin: 0 auto; width: fit-content; }
     .fomo { text-align: center; color: #961111; font-weight: bold; margin-top: 1rem; }
 
     /* Modal */
@@ -132,24 +133,43 @@
 </head>
 <body>
   <header>
-    <div class="logo"><img src="logo120.png" alt="Project 120 Africa"/>Project 120 Africa</div>
+    <div class="logo"><img src="logo.png" alt="Project 120 Africa"/>Project 120 Africa</div>
     <div class="hamburger" onclick="document.querySelector('nav').classList.toggle('active')"><div></div><div></div><div></div></div>
     <nav><a href="#overview">Overview</a><a href="#benefits">Benefits</a><a href="#structure">Structure</a><a href="#skills">Skills</a><a href="#team">Team</a><a href="#testimonials">Testimonials</a><a href="#faq">FAQ</a><a href="#register">Register</a></nav>
     <button id="theme-switcher">🌙</button>
   </header>
 
   <section class="hero">
-    <div class="hero-text">
-      <h1>Empowering Africa’s Youth Through Digital Skills</h1>
-      <p>Join Project 120 Africa to gain tech skills, mentorship, and real career opportunities.</p>
-      <button class="btn" onclick="scrollToSection('register')">Register Now</button>
+    <div class="hero-slide active" style="background-image: url('https://via.placeholder.com/1470x350?text=Slide+1');">
+      <div class="hero-content">
+        <h1>Empowering Africa’s Youth</h1>
+        <p>Join Project 120 Africa to gain tech skills, mentorship, and real career opportunities.</p>
+        <a href="https://nestuge.com/reg-project-120-africa-btmc25" class="btn">Register Now</a>
+      </div>
     </div>
-    <div class="hero-images">
-      <img src="https://via.placeholder.com/1470x350?text=Slide+1" class="active" />
-      <img src="https://via.placeholder.com/1470x350?text=Slide+2" />
-      <img src="https://via.placeholder.com/1470x350?text=Slide+3" />
-      <img src="https://via.placeholder.com/1470x350?text=Slide+4" />
-      <img src="https://via.placeholder.com/1470x350?text=Slide+5" />
+    <div class="hero-slide" style="background-image: url('https://via.placeholder.com/1470x350?text=Slide+2');">
+      <div class="hero-content">
+        <h1>Unlock Your Potential</h1>
+        <p>Learn from industry experts and build a portfolio that stands out.</p>
+      </div>
+    </div>
+    <div class="hero-slide" style="background-image: url('https://via.placeholder.com/1470x350?text=Slide+3');">
+      <div class="hero-content">
+        <h1>Network and Grow</h1>
+        <p>Connect with mentors and peers to accelerate your career.</p>
+      </div>
+    </div>
+    <div class="hero-slide" style="background-image: url('https://via.placeholder.com/1470x350?text=Slide+4');">
+      <div class="hero-content">
+        <h1>Hands-On Experience</h1>
+        <p>Gain practical skills through real-world projects and internships.</p>
+      </div>
+    </div>
+    <div class="hero-slide" style="background-image: url('https://via.placeholder.com/1470x350?text=Slide+5');">
+      <div class="hero-content">
+        <h1>Join the Movement</h1>
+        <p>Be part of a community driving digital transformation in Africa.</p>
+      </div>
     </div>
   </section>
 
@@ -166,6 +186,11 @@
       <li>Networking and mentorship opportunities</li>
       <li>Portfolio-ready projects and internships</li>
       <li>Access to an exclusive alumni community</li>
+      <li>Personalized career coaching</li>
+      <li>Exposure to cutting-edge technologies</li>
+      <li>Opportunities for remote work</li>
+      <li>Entrepreneurship support</li>
+      <li>Global networking events</li>
     </ul>
   </section>
 
@@ -191,6 +216,17 @@
       <div class="skill-card"><h4>Digital & Funnel Mktg</h4><p>Ad funnels & automation</p></div>
       <div class="skill-card"><h4>Google Ads & YouTube</h4><p>Advertising & monetization</p></div>
       <div class="skill-card"><h4>Virtual Assistance</h4><p>Admin support & tools mastery</p></div>
+      <div class="skill-card"><h4>Web Development</h4><p>HTML, CSS, JavaScript</p></div>
+      <div class="skill-card"><h4>Graphic Design</h4><p>Adobe Photoshop & Illustrator</p></div>
+      <div class="skill-card"><h4>SEO Optimization</h4><p>Improve search engine rankings</p></div>
+      <div class="skill-card"><h4>Project Management</h4><p>Agile & Scrum methodologies</p></div>
+      <div class="skill-card"><h4>UI/UX Design</h4><p>User-centered design principles</p></div>
+      <div class="skill-card"><h4>Cybersecurity Basics</h4><p>Protecting digital assets</p></div>
+      <div class="skill-card"><h4>Cloud Computing</h4><p>AWS, Azure, Google Cloud</p></div>
+      <div class="skill-card"><h4>Mobile App Development</h4><p>Android & iOS apps</p></div>
+      <div class="skill-card"><h4>Blockchain Technology</h4><p>Decentralized applications</p></div>
+      <div class="skill-card"><h4>Artificial Intelligence</h4><p>Machine learning basics</p></div>
+      <div class="skill-card"><h4>Digital Entrepreneurship</h4><p>Starting an online business</p></div>
     </div>
   </section>
 
@@ -261,20 +297,32 @@
 
       document.querySelector('.hamburger').onclick = () => document.querySelector('nav').classList.toggle('active');
 
-      let hi = 0;
-      const heroImgs = document.querySelectorAll('.hero-images img');
-      setInterval(() => {
-        heroImgs[hi].classList.remove('active');
-        hi = (hi + 1) % heroImgs.length;
-        heroImgs[hi].classList.add('active');
-      }, 5000);
+      let currentSlide = 0;
+      const slides = document.querySelectorAll('.hero-slide');
+      const totalSlides = slides.length;
+
+      function showSlide(index) {
+        slides.forEach((slide, i) => {
+          slide.classList.remove('active');
+          if (i === index) {
+            slide.classList.add('active');
+          }
+        });
+      }
+
+      function nextSlide() {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        showSlide(currentSlide);
+      }
+
+      setInterval(nextSlide, 5000);
 
       let pos = 0;
       const track = document.querySelector('.team-track');
       const cards = document.querySelectorAll('.member-card');
-      const total = cards.length;
+      const totalCards = cards.length;
       window.slideTeam = dir => {
-        pos = (pos + dir + total) % total;
+        pos = (pos + dir + totalCards) % totalCards;
         track.style.transform = `translateX(${-pos * 240}px)`;
       };
 
