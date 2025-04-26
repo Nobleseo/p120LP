@@ -5,29 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Project 120 Africa | Youth Empowerment</title>
   <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAACklEQVR4nGMAAQAABQABDQottAAAAABJRU5ErkJggg==" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-color: #121212;
-      --text-color: #ffffff;
+      --bg-color: #1A1A1A; /* Almost Black */
+      --text-color: #F5F5F5; /* Light Gray */
       --card-bg: #252525;
-      --title-color: #d9d80f; /* Yellow */
-      --accent-color: #139717; /* Green */
-      --button-bg: #d9d80f;
-      --button-text: #000000;
+      --title-color: #D4AF37; /* Gold */
+      --accent-color: #4B0082; /* Indigo */
+      --button-bg: #D4AF37; /* Gold */
+      --button-text: #1A1A1A; /* Almost Black */
       --faint: rgba(255,255,255,0.8);
     }
     body.light-theme {
-      --bg-color: #f5f5f5;
-      --text-color: #333333;
+      --bg-color: #F5F5F5; /* Light Gray */
+      --text-color: #333333; /* Dark Gray */
       --card-bg: #ffffff;
-      --title-color: #139717; /* Green */
-      --accent-color: #d9d80f; /* Yellow */
-      --button-bg: #139717;
-      --button-text: #ffffff;
+      --title-color: #4B0082; /* Indigo */
+      --accent-color: #D4AF37; /* Gold */
+      --button-bg: #4B0082; /* Indigo */
+      --button-text: #FFFFFF; /* White */
       --faint: rgba(0,0,0,0.6);
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: Arial, sans-serif; background: var(--bg-color); color: var(--text-color); }
+    body { font-family: 'Montserrat', sans-serif; background: var(--bg-color); color: var(--text-color); }
     a { text-decoration: none; color: inherit; }
     h1,h2,h3,h4 { animation: fadeInUp 1s ease-out; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); color: var(--title-color); }
     p, li { line-height: 1.6; animation: fadeInUp 1s ease-out; }
@@ -57,13 +58,14 @@
     .hero-slide.active { opacity: 1; transform: translateX(0); }
     .hero-slide:not(.active) { transform: translateX(100%); }
     .hero-content { text-align: center; color: #fff; text-shadow: 1px 1px 2px rgba(0,0,0,0.8); }
-    .hero-content h1 { font-size: 2.5rem; margin-bottom: 1rem; }
-    .hero-content p { font-size: 1.1rem; margin-bottom: 2rem; }
-    .hero-content .btn { background: var(--button-bg); color: var(--button-text); padding: .8rem 2rem; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; transition: background .3s; }
+    .hero-content h1 { font-size: 3rem; margin-bottom: 1rem; }
+    .hero-content p { font-size: 1.2rem; margin-bottom: 2rem; }
+    .hero-content .btn { background: var(--button-bg); color: var(--button-text); padding: 1rem 3rem; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; transition: background .3s; font-size: 1.2rem; }
     .hero-content .btn:hover { background: #c9c60d; }
 
     /* Sections */
-    .section { max-width: 900px; margin: 3rem auto; padding: 0 2rem; }
+    .section { max-width: 900px; margin: 3rem auto; padding: 0 2rem; opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .section.visible { opacity: 1; transform: translateY(0); }
     .section h2 { margin-bottom: 1rem; }
 
     /* Overview */
@@ -102,6 +104,13 @@
     .testimonial.active { display: block; }
     .testimonial p { font-style: italic; margin-bottom: 1rem; }
     .testimonial h4 { }
+
+    /* Success Statistics */
+    #success-stats { text-align: center; padding: 2rem 0; }
+    .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 2rem; }
+    .stat-item { background: var(--card-bg); padding: 1.5rem; border-radius: 8px; }
+    .stat-item h3 { font-size: 2rem; color: var(--title-color); }
+    .stat-item p { margin-top: 0.5rem; }
 
     /* FAQ */
     #faq .faq-item { background: var(--card-bg); margin: 1rem 0; border-radius: 6px; overflow: hidden; }
@@ -245,12 +254,39 @@
     <div class="slider-controls"><button onclick="slideTeam(-1)">←</button><button onclick="slideTeam(1)">→</button></div>
   </section>
 
+  <section id="success-stats" class="section">
+    <h2>Our Impact</h2>
+    <div class="stats-grid">
+      <div class="stat-item">
+        <h3>80%</h3>
+        <p>Graduates employed within 6 months</p>
+      </div>
+      <div class="stat-item">
+        <h3>500+</h3>
+        <p>Youth empowered across Africa</p>
+      </div>
+      <div class="stat-item">
+        <h3>95%</h3>
+        <p>Satisfaction rate from participants</p>
+      </div>
+    </div>
+  </section>
+
   <section id="testimonials" class="section">
     <h2>Testimonials</h2>
     <div id="testimonials">
-      <div class="testimonial active"><p>“This program transformed my career!”</p><h4>— Ruth M.</h4></div>
-      <div class="testimonial"><p>“I learned more in 3 months than 4 years in school.”</p><h4>— Emmanuel T.</h4></div>
-      <div class="testimonial"><p>“Mentorship and projects made all the difference.”</p><h4>— Chidera O.</h4></div>
+      <div class="testimonial active">
+        <p>“This program transformed my career!”</p>
+        <h4>— Ruth M., 28, Lagos</h4>
+      </div>
+      <div class="testimonial">
+        <p>“I learned more in 3 months than 4 years in school.”</p>
+        <h4>— Emmanuel T., 24, Accra</h4>
+      </div>
+      <div class="testimonial">
+        <p>“Mentorship and projects made all the difference.”</p>
+        <h4>— Chidera O., 22, Nairobi</h4>
+      </div>
     </div>
   </section>
 
@@ -350,6 +386,18 @@
       }, 1000);
 
       window.scrollToSection = id => document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+
+      // Fade-in animation for sections
+      const sections = document.querySelectorAll('.section');
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      sections.forEach(section => observer.observe(section));
     };
   </script>
 </body>
