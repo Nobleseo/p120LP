@@ -291,6 +291,17 @@
     footer {
       text-align:center; padding:1rem; background:var(--card-bg); margin-top:3rem; font-size:.85rem;
     }
+     @media (max-width: 768px) {
+      /* push all content below sticky header */
+      body {
+        padding-top: 70px;
+      }
+      /* let hero expand */
+      .hero {
+        height: auto;
+        padding-bottom: 2rem;
+      }
+    }
   </style>
 </head>
 <body>
