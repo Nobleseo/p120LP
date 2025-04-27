@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Project 120 Africa | Youth Empowerment</title>
-  <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAACklEQVR4nGMAAQAABQABDQottAAAAABJRU5ErkJggg==" />
+  <link rel="icon" type="image/png" href="data:bulb.png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAACklEQVR4nGMAAQAABQABDQottAAAAABJRU5ErkJggg==" />
 
   <!-- Preload hero images -->
   <link rel="preload" as="image" href="images/photo1.png">
@@ -149,7 +149,7 @@
       .slide-text p  { font-size:1rem; }
     }
 
-    /* CTA Above Overview with blinking arrows */
+    /* CTA Above Overview */
     .cta-container {
       position: relative;
       text-align: center;
@@ -169,7 +169,6 @@
     }
     .cta-container::before { left: calc(50% - 9rem); }
     .cta-container::after  { right: calc(50% - 9rem); transform: translateY(-50%) scaleX(-1); }
-
     .cta-btn { animation: blink 1.5s infinite; }
 
     /* Sections */
@@ -177,12 +176,15 @@
     .section.visible { opacity:1; transform:translateY(0); }
     .section h2 { margin-bottom:1rem; }
 
+    /* Overview */
+    #overview p { margin-bottom:1rem; }
+
     /* Benefits */
     #benefits ul { list-style:none; padding-left:0; }
     #benefits li { position:relative; padding-left:2rem; margin-bottom:1rem; }
     #benefits li::before { content:'✔'; position:absolute; left:0; color:var(--accent-color); }
 
-    /* Steps */
+    /* Structure */
     .steps { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1.5rem; }
     .step {
       background:var(--card-bg); padding:1.5rem; border-radius:8px;
@@ -190,7 +192,7 @@
     }
     .step h3 { margin-bottom:.5rem; color:var(--accent-color); }
 
-    /* Skills (20 total) */
+    /* Skills (20 cards) */
     .skills-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:1rem; }
     .skill-card {
       background:var(--card-bg); padding:1rem; border-radius:8px;
@@ -320,9 +322,7 @@
           <h1>Digital Optimization for Africa</h1>
           <p>Join Project 120 Africa to gain tech skills, mentorship, and real career opportunities, access to seed grant.</p>
         </div>
-        <div class="slide-img">
-          <img src="images/photo1.png" alt="Digital Optimization">
-        </div>
+        <div class="slide-img"><img src="photo1.png" alt="Digital Optimization"></div>
       </div>
     </div>
     <div class="hero-slide">
@@ -331,9 +331,7 @@
           <h1>Tech, Media, and Business</h1>
           <p>The Cornerstones of Africa's Digital Economy.</p>
         </div>
-        <div class="slide-img">
-          <img src="images/photo2.png" alt="Tech Media Business">
-        </div>
+        <div class="slide-img"><img src="photo2.png" alt="Tech Media Business"></div>
       </div>
     </div>
     <div class="hero-slide">
@@ -342,9 +340,7 @@
           <h1>Network and Grow</h1>
           <p>Innovating Africa's Workforce for Tomorrow's Economy.</p>
         </div>
-        <div class="slide-img">
-          <img src="images/photo3.png" alt="Network and Grow">
-        </div>
+        <div class="slide-img"><img src="photo3.png" alt="Network and Grow"></div>
       </div>
     </div>
     <div class="hero-slide">
@@ -353,9 +349,7 @@
           <h1>Sustainability Through Skills</h1>
           <p>Africa’s Digital Revolution.</p>
         </div>
-        <div class="slide-img">
-          <img src="images/photo4.png" alt="Sustainability Skills">
-        </div>
+        <div class="slide-img"><img src="photo4.png" alt="Sustainability Skills"></div>
       </div>
     </div>
     <div class="hero-slide">
@@ -364,24 +358,143 @@
           <h1>Shaping Africa’s Digital Economy</h1>
           <p>Be part of a community driving digital transformation in Africa.</p>
         </div>
-        <div class="slide-img">
-          <img src="images/photo5.webp" alt="Shaping Economy">
-        </div>
+        <div class="slide-img"><img src="photo5.webp" alt="Shaping Economy"></div>
       </div>
     </div>
   </section>
 
   <div class="cta-container">
-    <a href="https://nestuge.com/reg-project-120-africa-btmc25" class="cta-btn" target="_blank">
-      Register Now
-    </a>
+    <a href="https://nestuge.com/reg-project-120-africa-btmc25" class="cta-btn" target="_blank">Register Now</a>
   </div>
 
-  <!-- the rest of your sections remain unchanged -->
+  <section id="overview" class="section">
+    <h2>Project 120 Overview</h2>
+    <p>Project 120 Africa is a high-impact youth empowerment initiative focused on equipping the next generation with essential tech, media, and business skills.     At the core of this project is the commitment to unlocking the full potentials of 120 skilled/unskilled yet ambitious individuals each project month, with the expertise, network and real world experience required to thrive and also offering the participants the knowledge, tools and practical exposure necessary to excel in today’s highly competitive global landscape.</p>
+  </section>
+
+  <section id="benefits" class="section">
+    <h2>Benefits</h2>
+    <ul>
+      <li>Hands-on training with industry experts</li>
+      <li>Certification and digital credentials</li>
+      <li>Networking and mentorship opportunities</li>
+      <li>Portfolio-ready projects and internships</li>
+      <li>Access to an exclusive alumni community</li>
+      <li>Personalized career coaching</li>
+      <li>Exposure to cutting-edge technologies</li>
+      <li>Opportunities for remote work</li>
+      <li>Entrepreneurship support</li>
+      <li>Global networking events</li>
+    </ul>
+  </section>
+
+  <section id="structure" class="section">
+    <h2>Project Structure</h2>
+    <div class="steps">
+      <div class="step"><h3>Registration</h3>4-week sign-up per cohort with early bird pricing.</div>
+      <div class="step"><h3>Conference</h3>2 days intensive world class sessions with panels, workshops and pitchdecks.</div>
+      <div class="step"><h3>Internship</h3>8 weeks intensive internship hands on experience in chosen skill set accompanied with practical sessions and experiments.</div>
+      <div class="step"><h3>Certification</h3>Award ceremony recognizing all 120 participants, during this ceremony the project will doll out grants in cash and other prizes to outstanding participants.</div>
+      <div class="step"><h3>Onboarding</h3>After the internship all 120 participants will be given access to an already saturated market of high paying jobs and also availed a 3 months mentorship.</div>
+    </div>
+  </section>
+
+  <section id="skills" class="section">
+    <h2>Skills Offered</h2>
+    <div class="skills-grid">
+      <!-- 20 skill-cards here -->
+      <div class="skill-card"><h4>Data Analysis</h4><p>Master Excel & Power BI</p></div>
+      <div class="skill-card"><h4>Email Marketing</h4><p>Craft high-converting campaigns</p></div>
+      <div class="skill-card"><h4>Video Editing</h4><p>Adobe Premiere & storytelling</p></div>
+      <div class="skill-card"><h4>Graphic Design</h4><p>Adobe Photoshop & Illustrator</p></div>
+      <div class="skill-card"><h4>AI Literacy</h4><p>Fundamentals of artificial intelligence & ethics</p></div>
+      <div class="skill-card"><h4>Conflict Mitigation</h4><p>Strategies for resolving disputes</p></div>
+      <div class="skill-card"><h4>Process Optimization</h4><p>Lean and efficient workflows</p></div>
+      <div class="skill-card"><h4>Innovative Thinking</h4><p>Creative problem-solving techniques</p></div>
+      <div class="skill-card"><h4>Public Speaking</h4><p>Present with confidence & clarity</p></div>
+      <div class="skill-card"><h4>Solution-based Selling</h4><p>Customer-focused sales strategies</p></div>
+      <div class="skill-card"><h4>Customer Engagement & Support</h4><p>Building lasting customer relationships</p></div>
+      <div class="skill-card"><h4>Go-to-Market Strategy</h4><p>Launching products successfully</p></div>
+      <div class="skill-card"><h4>Risk Assessment</h4><p>Identifying & mitigating project risks</p></div>
+      <div class="skill-card"><h4>Growth Strategy</h4><p>Scalable business development plans</p></div>
+      <div class="skill-card"><h4>Strategic Planning</h4><p>Foundations of long-term planning</p></div>
+      <div class="skill-card"><h4>Data Visualization</h4><p>Best practices for presenting data</p></div>
+      <div class="skill-card"><h4>Leadership Development</h4><p>Essentials of leading teams</p></div>
+      <div class="skill-card"><h4>Emotional Intelligence</h4><p>Self-awareness & relationship management</p></div>
+      <div class="skill-card"><h4>Time Management</h4><p>Effective prioritization techniques</p></div>
+      <div class="skill-card"><h4>Negotiation Skills</h4><p>Mastering deal-making tactics</p></div>
+    </div>
+  </section>
+
+  <section id="team" class="section">
+    <h2>Meet the Team</h2>
+    <div class="team-slider">
+      <div class="team-track">
+        <!-- 11 member-cards duplicated -->
+        <div class="member-card"><img src="convvy.png" alt="Emmanuel J"><h4>Emmanuel J</h4><p>The Convener…</p></div>
+        <div class="member-card"><img src="itoro.png" alt="Itoro"><h4>Itoro Okwong</h4><p>Project Manager…</p></div>
+        <div class="member-card"><img src="emmanuel.png" alt="Emmy T"><h4>Emmy T</h4><p>Media Strategist & Content Lead</p></div>
+        <div class="member-card"><img src="edikan.png" alt="Edikan"><h4>Edikan UKo</h4><p>Business Mentor…</p></div>
+        <div class="member-card"><img src="fatima.png" alt="Fatima Ade"><h4>Fatima Ade</h4><p>SEO & Analytics Specialist</p></div>
+        <div class="member-card"><img src="samuel.png" alt="Samuel"><h4>Samuel Okoro</h4><p>UX/UI Designer & Educator</p></div>
+        <!-- duplicates for count -->
+        <div class="member-card"><img src="convvy.png" alt="Emmanuel J"><h4>Emmanuel J</h4><p>The Convener…</p></div>
+        <div class="member-card"><img src="itoro.png" alt="Itoro"><h4>Itoro Okwong</h4><p>Project Manager…</p></div>
+        <div class="member-card"><img src="emmanuel.png" alt="Emmy T"><h4>Emmy T</h4><p>Media Strategist & Content Lead</p></div>
+        <div class="member-card"><img src="edikan.png" alt="Edikan"><h4>Edikan UKo</h4><p>Business Mentor…</p></div>
+        <div class="member-card"><img src="convy.png" alt="Emmanuel J"><h4>Emmanuel J</h4><p>The Convener…</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="success-stats" class="section">
+    <h2>Our Impact</h2>
+    <div class="stats-grid">
+      <div class="stat-item"><h3>80%</h3><p>Graduates employed within 6 months</p></div>
+      <div class="stat-item"><h3>100+</h3><p>Youth empowered across Africa</p></div>
+      <div class="stat-item"><h3>95%</h3><p>Satisfaction rate from participants</p></div>
+    </div>
+  </section>
+
+  <section id="testimonials" class="section">
+    <h2>Testimonials</h2>
+    <div id="testimonials">
+      <div class="testimonial active"><p>“This program transformed my career!”</p><h4>— Ruth M., 28, Lagos</h4></div>
+      <div class="testimonial"><p>“I learned more in 3 months than 4 years in school.”</p><h4>— Emmanuel T., 24, Accra</h4></div>
+      <div class="testimonial"><p>“Mentorship and projects made all the difference.”</p><h4>— Chidera O., 22, Nairobi</h4></div>
+    </div>
+  </section>
+
+  <section id="faq" class="section">
+    <h2>FAQ</h2>
+    <div class="faq-item"><div class="faq-question">What is the registration fee?</div><div class="faq-answer"><p>Early bird ₦25,600, standard ₦40,000.</p></div></div>
+    <div class="faq-item"><div class="faq-question">Who can apply?</div><div class="faq-answer"><p>Fresh graduates, sit at home mums, enthusiastic individuals.</p></div></div>
+    <div class="faq-item"><div class="faq-question">Is there a refund policy?</div><div class="faq-answer"><p>Full refund if canceled 7 days prior.</p></div></div>
+    <div class="faq-item"><div class="faq-question">How is training delivered?</div><div class="faq-answer"><p>Virtually: 2 hours daily, 8 weeks work with practical modules.</p></div></div>
+  </section>
+
+  <section id="register" class="section">
+    <h2>Register Now</h2>
+    <div id="countdown"></div>
+    <div class="guarantee"><img src="https://img.icons8.com/ios-filled/50/ffffff/guarantee.png" alt="Guarantee"/><span>100% Money-Back Guarantee</span></div>
+    <div class="pricing"><span class="original-price">₦40,000</span><span class="early-bird">₦25,600 Early Bird</span></div>
+    <a href="https://nestuge.com/reg-project-120-africa-btmc25" class="cta-btn" target="_blank">Register Now</a>
+    <div class="fomo">Hurry! Limited seats available.</div>
+  </section>
+
+  <div class="modal" id="thankYouModal">
+    <div class="modal-content">
+      <h1>Thank You!</h1>
+      <p>Payment successful.</p>
+      <a href="https://chat.whatsapp.com/KVnHToCiRPy9PP5ZRmQ7wj" target="_blank">Join WhatsApp Group</a>
+    </div>
+  </div>
+
+  <footer>© 2025 Project 120 Africa. All rights reserved.</footer>
 
   <script>
     window.onload = () => {
-      /* Theme */
+      /* Theme toggle */
       const ts = document.getElementById('theme-switcher');
       if (localStorage.getItem('theme') === 'light') {
         document.body.classList.add('light-theme');
