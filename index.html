@@ -24,11 +24,11 @@
       --text-color:   #F5F5F5;
       --card-bg:      #252525;
       --title-color:  #D4AF37;
-      --accent-color: #1B5E20; /* darker, more professional green */
+      --accent-color: #1B5E20;
       --button-bg:    linear-gradient(135deg, #D4AF37 0%, #F0C75E 100%);
       --button-text:  #1A1A1A;
       --faint:        rgba(255,255,255,0.4);
-      --arrow-color:  #800000; /* oxblood red */
+      --arrow-color:  #800000;
     }
     body.light-theme {
       --bg-color:     #F5F5F5;
@@ -61,7 +61,6 @@
     h2 { font-size: 2rem;   line-height: 1.3; }
     h3 { font-size: 1.5rem; line-height: 1.4; }
     h4 { font-size: 1.2rem; line-height: 1.5; }
-
     p, li {
       font-size: 1rem;
       line-height: 1.7;
@@ -69,7 +68,6 @@
       animation: fadeInUp 1s ease-out;
       margin-bottom: 1em;
     }
-
     a { text-decoration: none; color: inherit; }
     *, *::before, *::after { box-sizing: border-box; }
 
@@ -112,16 +110,16 @@
       .hamburger { display: flex; }
     }
 
-    /* Hero as flex */
+    /* Hero */
     .hero { position: relative; height: 350px; overflow: hidden; }
     .hero-slide {
-      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      position: absolute; top:0; left:0; width:100%; height:100%;
       display: flex; align-items: center; justify-content: center;
       background-color: var(--accent-color);
       opacity: 0; transition: opacity 1s ease, transform 1s ease;
     }
     .hero-slide::before {
-      content: ''; position: absolute; top:0; left:0; width:100%; height:100%;
+      content: ''; position:absolute; top:0; left:0; width:100%; height:100%;
       background: rgba(0,0,0,0.3); z-index:1;
     }
     .slide-inner {
@@ -137,39 +135,41 @@
     .hero-slide.active { opacity:1; transform:translateX(0); }
     .hero-slide:not(.active) { transform:translateX(100%); }
 
-    /* Mobile stacking */
     @media (max-width:768px) {
       .hero { height:250px; }
       .slide-inner {
         flex-direction: column;
         align-items: center;
         text-align: center;
-        padding:1rem;
-        gap:1.5rem;
+        padding: 1rem;
+        gap: 1.5rem;
       }
-      .slide-text, .slide-img { width:100%; }
       .slide-img img { width:100%; max-width:300px; margin-top:.5rem; }
       .slide-text h1 { font-size:2rem; }
       .slide-text p  { font-size:1rem; }
     }
 
-    /* CTA Above Overview with arrow */
+    /* CTA Above Overview with blinking arrows */
     .cta-container {
       position: relative;
-      text-align:center;
-      margin:2rem auto;
-      max-width:900px;
-      padding:0 2rem;
+      text-align: center;
+      margin: 2rem auto;
+      max-width: 900px;
+      padding: 0 2rem;
     }
-    .cta-container::before {
-      content: '➤';
+    .cta-container::before,
+    .cta-container::after {
+      content: '➤➤';
       position: absolute;
-      left: calc(50% - 7rem);
       top: 50%;
       transform: translateY(-50%);
       color: var(--arrow-color);
       font-size: 1.5rem;
+      animation: blink 1.5s infinite;
     }
+    .cta-container::before { left: calc(50% - 9rem); }
+    .cta-container::after  { right: calc(50% - 9rem); transform: translateY(-50%) scaleX(-1); }
+
     .cta-btn { animation: blink 1.5s infinite; }
 
     /* Sections */
@@ -190,7 +190,7 @@
     }
     .step h3 { margin-bottom:.5rem; color:var(--accent-color); }
 
-    /* Skills: now 20 cards */
+    /* Skills (20 total) */
     .skills-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:1rem; }
     .skill-card {
       background:var(--card-bg); padding:1rem; border-radius:8px;
@@ -198,27 +198,6 @@
       box-shadow:0 2px 6px rgba(0,0,0,0.15);
     }
     .skill-card:hover { transform:translateY(-5px); }
-    /* 20 entries */
-    /* 1 */ .skill-card:nth-child(1)  h4:after {content: ' – Master Excel & Power BI';}
-    /* 2 */ .skill-card:nth-child(2)  h4:after {content: ' – Craft high-converting campaigns';}
-    /* 3 */ .skill-card:nth-child(3)  h4:after {content: ' – Adobe Premiere & storytelling';}
-    /* 4 */ .skill-card:nth-child(4)  h4:after {content: ' – Adobe Photoshop & Illustrator';}
-    /* 5 */ .skill-card:nth-child(5)  h4:after {content: ' – Fundamentals of AI & ethics';}
-    /* 6 */ .skill-card:nth-child(6)  h4:after {content: ' – Conflict resolution strategies';}
-    /* 7 */ .skill-card:nth-child(7)  h4:after {content: ' – Lean and efficient workflows';}
-    /* 8 */ .skill-card:nth-child(8)  h4:after {content: ' – Creative problem-solving techniques';}
-    /* 9 */ .skill-card:nth-child(9)  h4:after {content: ' – Present with confidence & clarity';}
-    /* 10*/ .skill-card:nth-child(10) h4:after {content: ' – Customer-focused sales strategies';}
-    /* 11*/ .skill-card:nth-child(11) h4:after {content: ' – Building lasting customer relationships';}
-    /* 12*/ .skill-card:nth-child(12) h4:after {content: ' – Launching products successfully';}
-    /* 13*/ .skill-card:nth-child(13) h4:after {content: ' – Identifying & mitigating project risks';}
-    /* 14*/ .skill-card:nth-child(14) h4:after {content: ' – Scalable business development plans';}
-    /* 15*/ .skill-card:nth-child(15) h4:after {content: ' – Strategic Planning fundamentals';}
-    /* 16*/ .skill-card:nth-child(16) h4:after {content: ' – Data Visualization best practices';}
-    /* 17*/ .skill-card:nth-child(17) h4:after {content: ' – Leadership Development essentials';}
-    /* 18*/ .skill-card:nth-child(18) h4:after {content: ' – Emotional Intelligence skills';}
-    /* 19*/ .skill-card:nth-child(19) h4:after {content: ' – Time Management techniques';}
-    /* 20*/ .skill-card:nth-child(20) h4:after {content: ' – Negotiation Skills mastery';}
 
     /* Team Slider */
     #team { padding:2rem 0; text-align:center; }
@@ -256,7 +235,7 @@
     }
     .faq-item.open .faq-answer { max-height:200px; padding:1rem; }
 
-    /* Register: center button with arrow */
+    /* Register with blinking arrows */
     #register {
       background:var(--card-bg); padding:2rem; border-radius:8px;
       max-width:500px; margin:3rem auto; text-align:center;
@@ -265,16 +244,21 @@
     }
     #register .cta-btn {
       display:inline-block; margin:0 auto; position: relative;
+      animation: blink 1.5s infinite;
     }
-    #register .cta-btn::before {
-      content: '➤';
+    #register .cta-btn::before,
+    #register .cta-btn::after {
+      content: '➤➤';
       position: absolute;
-      left: -1.5rem;
       top: 50%;
       transform: translateY(-50%);
       color: var(--arrow-color);
       font-size: 1.5rem;
+      animation: blink 1.5s infinite;
     }
+    #register .cta-btn::before { left: -3rem; }
+    #register .cta-btn::after  { right: -3rem; transform: translateY(-50%) scaleX(-1); }
+
     #countdown { text-align:center; margin-bottom:1rem; }
     .guarantee { display:flex; align-items:center; justify-content:center; margin-bottom:1rem; }
     .guarantee img { width:30px; margin-right:.5rem; }
@@ -393,12 +377,11 @@
     </a>
   </div>
 
-  <!-- rest of your sections remain unchanged -->
+  <!-- the rest of your sections remain unchanged -->
 
-  <!-- Scripts -->
   <script>
     window.onload = () => {
-      /* Theme toggle */
+      /* Theme */
       const ts = document.getElementById('theme-switcher');
       if (localStorage.getItem('theme') === 'light') {
         document.body.classList.add('light-theme');
