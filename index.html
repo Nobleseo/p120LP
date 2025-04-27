@@ -5,7 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Project 120 Africa | Youth Empowerment</title>
   <link rel="icon" type="image/png" href="data:bulb.png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAACklEQVR4nGMAAQAABQABDQottAAAAABJRU5ErkJggg==" />
+<style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
+    body, html {
+      width: 100%;
+      overflow-x: hidden; /* Prevent side-scrolling */
+    }
+
+    img {
+      max-width: 100%;
+      height: auto; /* Make images responsive */
+      display: block;
+    }
+
+    .hero, .container, .section {
+      width: 100%;
+      max-width: 1200px; /* Optional: Limit very large screens */
+      margin: 0 auto; /* Center the content */
+      padding: 0 20px; /* Some space inside edges */
+    }
+  </style>
   <!-- Preload hero images -->
   <link rel="preload" as="image" href="images/photo1.png">
   <link rel="preload" as="image" href="images/photo2.png">
@@ -97,7 +121,7 @@
       padding: 1rem 2rem; background: var(--card-bg); position: sticky; top: 0; z-index: 100;
     }
     .logo { display: flex; align-items: center; }
-    .logo img { height: 50px; margin-right: .5rem; }
+    .logo img { height: 30px; margin-right: -0.5rem; }
     nav { display: flex; gap: 1rem; }
     nav a { font-weight: 700; transition: opacity .2s; }
     nav a:hover { opacity: .7; }
