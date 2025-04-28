@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Project 120 Africa | Youth Empowerment</title>
-  <link rel="icon" type="image/png" href="data:bulb.png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAACklEQVR4nGMAAQAABQABDQottAAAAABJRU5ErkJggg==" />
+  <link rel="icon" type="image/bulb.png" href="data:bulb.png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAACklEQVR4nGMAAQAABQABDQottAAAAABJRU5ErkJggg==" />
 <style>
     * {
       margin: 0;
@@ -118,10 +118,10 @@
     /* Header */
     header {
       display: flex; align-items: center; justify-content: space-between;
-      padding: 1rem 2rem; background: var(--card-bg); position: sticky; top: 0; z-index: 100;
+      padding: 1rem 2rem; background:#477b565c;position: sticky; top: 0; z-index: 100;
     }
     .logo { display: flex; align-items: center; }
-    .logo img { height: 30px; margin-right: -0.5rem; }
+    .logo img { height: 40px; margin-right: -0.5rem; }
     nav { display: flex; gap: 1rem; }
     nav a { font-weight: 700; transition: opacity .2s; }
     nav a:hover { opacity: .7; }
@@ -144,7 +144,7 @@
     }
     .hero-slide::before {
       content: ''; position:absolute; top:0; left:0; width:100%; height:100%;
-      background: rgba(0,0,0,0.3); z-index:1;
+      background: rgba(0,0,0,0.7); z-index:1;
     }
     .slide-inner {
       display: flex; align-items: center; max-width:1200px; width:100%; padding:0 2rem; gap:2rem; z-index:2;
@@ -168,7 +168,7 @@
         padding: 1rem;
         gap: 1.5rem;
       }
-      .slide-img img { width:100%; max-width:300px; margin-top:.5rem; }
+      .slide-img img { width:100%; max-width:405px; margin-top:-0.5rem; }
       .slide-text h1 { font-size:2rem; }
       .slide-text p  { font-size:1rem; }
     }
@@ -326,6 +326,27 @@
         padding-bottom: 27rem;
       }
     }
+    .scroll-buttons {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.scroll-buttons button {
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 5px;
+  font-size: 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.scroll-buttons button:hover {
+  background-color: #0056b3;
+}
+
   </style>
 </head>
 <body>
@@ -426,7 +447,7 @@
   <section id="structure" class="section">
     <h2>Project Structure</h2>
     <div class="steps">
-      <div class="step"><h3>Registration</h3>4-week sign-up per cohort with early bird pricing.</div>
+      <div class="step"><h3>Registration</h3>4-week sign-up window per cohort with early bird pricing.</div>
       <div class="step"><h3>Conference</h3>2 days intensive world class sessions with panels, workshops and pitchdecks.</div>
       <div class="step"><h3>Internship</h3>8 weeks intensive internship hands on experience in chosen skill set accompanied with practical sessions and experiments.</div>
       <div class="step"><h3>Certification</h3>Award ceremony recognizing all 120 participants, during this ceremony the project will doll out grants in cash and other prizes to outstanding participants.</div>
@@ -466,27 +487,33 @@
     <div class="team-slider">
       <div class="team-track">
         <!-- 11 member-cards duplicated -->
-        <div class="member-card"><img src="convvy.png" alt="Emmanuel J"><h4>Emmanuel J</h4><p>The Convener…</p></div>
+        <div class="member-card"><img src="convvy.png" alt="Emmanuel J"><h4>Emmanuel J.</h4><p>The Convener…</p></div>
         <div class="member-card"><img src="itoro.png" alt="Itoro"><h4>Itoro Okwong</h4><p>Project Manager</p></div>
-        <div class="member-card"><img src="emmanuel.png" alt="Emmy T"><h4>Emmy T</h4><p>Media Strategist & Content Lead</p></div>
-        <div class="member-card"><img src="edikan.png" alt="Edikan"><h4>Edikan UKo</h4><p>Abuja Team Lead</p></div>
-        <div class="member-card"><img src="esther.png" alt="Esther P."><h4>Esther P</h4><p>Project Lead/Country Rep</p></div>
-        <div class="member-card"><img src="Uduak.png" alt="Samuel"><h4>Uduak Ekpuk</h4><p> Social Media Manager</p></div>
+        <div class="member-card"><img src="esther.png" alt="Esther p"><h4>Esther P.</h4><p>Project Lead/Country Rep(Nigeria)</p></div>
+        <div class="member-card"><img src="uduak.png" alt="uduak"><h4>Uduak Ekpuk</h4><p>Social Media Manager</p></div>
+        <div class="member-card"><img src="iniubong.png" alt="Iniubong a"><h4>Iniubong A.</h4><p>Tech/Ict</p></div>
+        <div class="member-card"><img src="victor.png" alt="viktor"><h4>Viktor T.</h4><p> Graphics Illustrator</p></div>
         <!-- duplicates for count -->
-        <div class="member-card"><img src="Victor.png" alt="victor"><h4>VikTor T</h4><p>Graphics Illustrator</p></div>
-        <div class="member-card"><img src="mmema.png" alt="Itoro"><h4>Mmema-Abasi</h4><p>Head of Volunteers</p></div>
-        <div class="member-card"><img src="faith.png" alt="Emmy T"><h4>Faith Abatai</h4><p>Assistant Head of volunteer</p></div>
-        <div class="member-card"><img src="Gideon.png" alt="Edikan"><h4>Gideon N</h4><p>Logistics Manager</p></div>
-        <div class="member-card"><img src="convy.png" alt="Emmanuel J"><h4>Iniubong Akpan</h4><p>Tech/Ict</p></div>
+        <div class="member-card"><img src="edikan.png" alt="victor"><h4>Edikan U.</h4><p>Cohort Rep(Abuja)</p></div>
+        <div class="member-card"><img src="emmanuel.png" alt="emmy"><h4>Emmy T.</h4><p>Media & Content Developer</p></div>
+        <div class="member-card"><img src="bobo.png" alt="bobo"><h4>Gideon N.</h4><p>Logistics Manager</p></div>
+        <div class="member-card"><img src="mmema.png" alt="Edikan"><h4>Mmema-Abasi E.</h4><p>Head of Volunteers</p></div>
+        <div class="member-card"><img src="faith.png" alt="Emmanuel J"><h4>Faith A.</h4><p>Assistant Head of Volunteers</p></div>
       </div>
     </div>
+     <!-- Scroll buttons -->
+  <div class="scroll-buttons">
+    <button id="scroll-left">←</button>
+    <button id="scroll-right">→</button>
+  </div>
+
   </section>
 
   <section id="success-stats" class="section">
     <h2>Our Impact</h2>
     <div class="stats-grid">
       <div class="stat-item"><h3>80%</h3><p>Graduates employed within 6 months</p></div>
-      <div class="stat-item"><h3>100+</h3><p>Youth empowered across Africa</p></div>
+      <div class="stat-item"><h3>500+</h3><p>Youth empowered across Africa</p></div>
       <div class="stat-item"><h3>95%</h3><p>Satisfaction rate from participants</p></div>
     </div>
   </section>
@@ -524,6 +551,26 @@
       <a href="https://chat.whatsapp.com/KVnHToCiRPy9PP5ZRmQ7wj" target="_blank">Join WhatsApp Group</a>
     </div>
   </div>
+  <!-- Meet the Team Section ends here -->
+
+<!-- Start Gallery Section -->
+<section id="gallery">
+  <h2>Project Gallery</h2>
+  <div class="gallery-container">
+    <img src="img11.png" alt="Gallery Image 1">
+    <img src="img22.png" alt="Gallery Image 2">
+    <img src="img23.png" alt="Gallery Image 3">
+    <img src="gallery4.jpg" alt="Gallery Image 4">
+    <!-- Add more images as needed -->
+  </div>
+</section>
+<!-- End Gallery Section -->
+
+<!-- Footer Starts here -->
+<footer>
+  <!-- footer contents -->
+</footer>
+
 
   <footer>© 2025 Project 120 Africa. All rights reserved.</footer>
 
@@ -600,5 +647,25 @@
       document.querySelectorAll('.section').forEach(s => obs.observe(s));
     };
   </script>
+  <script>
+  const scrollContainer = document.getElementById('team-container');
+  const scrollLeftBtn = document.getElementById('scroll-left');
+  const scrollRightBtn = document.getElementById('scroll-right');
+
+  scrollLeftBtn.addEventListener('click', () => {
+    scrollContainer.scrollBy({
+      left: -300,
+      behavior: 'smooth'
+    });
+  });
+
+  scrollRightBtn.addEventListener('click', () => {
+    scrollContainer.scrollBy({
+      left: 300,
+      behavior: 'smooth'
+    });
+  });
+</script>
+
 </body>
 </html>
