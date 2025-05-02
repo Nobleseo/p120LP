@@ -492,10 +492,10 @@
         <div class="member-card"><img src="esther.png" alt="Esther p"><h4>Esther P.</h4><p>Project Lead/Country Rep(Nigeria)</p></div>
         <div class="member-card"><img src="uduak.png" alt="uduak"><h4>Uduak Ekpuk</h4><p>Social Media Manager</p></div>
         <div class="member-card"><img src="iniubong.png" alt="Iniubong a"><h4>Iniubong A.</h4><p>Tech/Ict</p></div>
-        <div class="member-card"><img src="victor.png" alt="viktor"><h4>Viktor T.</h4><p> Graphics Illustrator</p></div>
+        <div class="member-card"><img src="victor.png" alt="viktor"><h4>Victor T.</h4><p> Graphics Illustrator</p></div>
         <!-- duplicates for count -->
         <div class="member-card"><img src="edikan.png" alt="victor"><h4>Edikan U.</h4><p>Cohort Rep(Abuja)</p></div>
-        <div class="member-card"><img src="emmanuel.png" alt="emmy"><h4>Emmy T.</h4><p>Media & Content Developer</p></div>
+        <div class="member-card"><img src="emmanuel.png" alt="emmy"><h4>Emmy J.</h4><p>Media & Content Developer</p></div>
         <div class="member-card"><img src="bobo.jpeg" alt="bobo"><h4>Gideon N.</h4><p>Logistics Manager</p></div>
         <div class="member-card"><img src="mmema.png" alt="Edikan"><h4>Mmema-Abasi E.</h4><p>Head of Volunteers</p></div>
         <div class="member-card"><img src="faith.png" alt="Emmanuel J"><h4>Faith A.</h4><p>Assistant Head of Volunteers</p></div>
@@ -665,6 +665,20 @@
     });
   });
 </script>
+  <script>
+  const teamContainer = document.getElementById('teamContainer');
+  const scrollLeft = document.getElementById('scrollLeft');
+  const scrollRight = document.getElementById('scrollRight');
+
+  scrollLeft.addEventListener('click', () => {
+    teamContainer.scrollBy({ left: -250, behavior: 'smooth' });
+  });
+
+  scrollRight.addEventListener('click', () => {
+    teamContainer.scrollBy({ left: 250, behavior: 'smooth' });
+  });
+</script>
+
 
 </body>
 </html>
